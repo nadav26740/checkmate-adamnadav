@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-10T11:55:25.482Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.441" etag="UjS33X21Ti93JglEwcLn" version="13.11.0" type="gitlab" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-12-10T11:59:26.890Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.441" etag="0exjOvV5K4inL02S1Bbq" version="13.11.0" type="gitlab" pages="2">
   <diagram name="Object Chess piece" id="5f0bae14-7c28-e335-631c-24af17079c00">
     <mxGraphModel dx="2689" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -139,16 +139,19 @@
         <mxCell id="8URGRsGb-NthaxYBKnCZ-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.047;entryY=-0.032;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="tPsW-EHSZQML5RoGISPa-11" target="8URGRsGb-NthaxYBKnCZ-22">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="j_AmPq53fzwSkY8-xVPl-1" value="&lt;h1&gt;constructor&lt;br&gt;and destructor&lt;/h1&gt;&lt;div&gt;are in every class except ChessEvents&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="470" width="190" height="120" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="EnrxKj8IyKFMY79Fy4lM" name="Chess Board">
-    <mxGraphModel dx="599" dy="310" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1589" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="UpVdrXvw_2DDXxn-o3Fd-0" />
         <mxCell id="UpVdrXvw_2DDXxn-o3Fd-1" parent="UpVdrXvw_2DDXxn-o3Fd-0" />
         <mxCell id="UpVdrXvw_2DDXxn-o3Fd-2" value="Board&#xa;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;sketch=0;strokeColor=#000000;" parent="UpVdrXvw_2DDXxn-o3Fd-1" vertex="1">
-          <mxGeometry x="130" y="30" width="430" height="160" as="geometry" />
+          <mxGeometry x="130" y="30" width="430" height="230" as="geometry" />
         </mxCell>
         <mxCell id="UpVdrXvw_2DDXxn-o3Fd-3" value="- ChessPiece* boardpiece[8][8];&#xa;// nullptr - no piece&#xa;// everything else - piece&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="UpVdrXvw_2DDXxn-o3Fd-2" vertex="1">
           <mxGeometry y="26" width="430" height="64" as="geometry" />
@@ -156,8 +159,8 @@
         <mxCell id="UpVdrXvw_2DDXxn-o3Fd-4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="UpVdrXvw_2DDXxn-o3Fd-2" vertex="1">
           <mxGeometry y="90" width="430" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="UpVdrXvw_2DDXxn-o3Fd-5" value="+ ChessPiece* getBoard();&#xa;+ ChessPiece* CheckCord(int cords[2]); // return null if no piece in place&#xa;+ void move(int oldCords[2], int newcord[2], chessPiece* piece);" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="UpVdrXvw_2DDXxn-o3Fd-2" vertex="1">
-          <mxGeometry y="98" width="430" height="62" as="geometry" />
+        <mxCell id="UpVdrXvw_2DDXxn-o3Fd-5" value="+ ChessPiece* getBoard();&#xa;+ ChessPiece* CheckCord(int cords[2]); // return null if no piece in place&#xa;+ void move(int oldCords[2], int newcord[2], chessPiece* piece);&#xa;- void ResetBoard();&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="UpVdrXvw_2DDXxn-o3Fd-2" vertex="1">
+          <mxGeometry y="98" width="430" height="132" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
