@@ -39,6 +39,29 @@ void Board::createPiece(int cords[2], int pieceType)
     }
 }
 
+Board::Board()
+{
+    int i = 0;
+    for (i = 0; i < 64; i++)
+    {
+        boardPieces[i] = nullptr;
+    }
+    this->resetBoard();
+}
+
+Board::~Board()
+{
+    int i = 0;
+    for (i = 0; i < 64; i++)
+    {
+        if (boardPieces[i] != nullptr)
+        {
+            delete boardPieces[i];
+            boardPieces[i] = nullptr;
+        }
+    }
+}
+
 ChessPiece** Board::getBoard()
 {
     return boardPieces;
