@@ -14,7 +14,7 @@ class Board
 private:
 	ChessPiece* boardPieces[64]; // location on board 
 	void createPiece(int cords[2], int pieceType); // 0 - Pawn | 1 - Bishop | 2 - King | 3 - Queen | 4 - Knight | 5 - Rock
-
+	void test();
 public:
 	Board();
 	~Board();
