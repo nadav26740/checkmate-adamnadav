@@ -154,6 +154,7 @@
     <ClCompile Include="ChessPiece.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Rock.cpp" />
