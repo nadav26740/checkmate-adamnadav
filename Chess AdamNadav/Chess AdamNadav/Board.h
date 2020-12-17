@@ -19,6 +19,7 @@ public:
 	Board();
 	~Board();
 	ChessPiece** getBoard(); // returning the boardPieces
+	std::string getBoardString();
 	ChessPiece* CheckCoard(int cords[2]); // returning the Piece in the cord (nullptr if no piece) // doesn't check vaild
 	void move(int oldCords[2], int newCords[2], ChessPiece* piece); // putting nullptr in old cords and put the piece in the new cord (if there was already piece deleting him)
 	void resetBoard(); // reseting the board, creating the Chess Pieces and putting tham in the place 

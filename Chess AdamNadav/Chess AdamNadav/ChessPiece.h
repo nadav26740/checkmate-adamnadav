@@ -13,6 +13,7 @@ public:
 	int* getlocation(); // return _cords
 	virtual void move(int* newCords) = 0; // virtual
 	bool getWhite(); // return _White
+	char getName();
 
 };
 

@@ -11,3 +11,8 @@ ChessPiece::ChessPiece(int cords[2], bool white)
 ChessPiece::~ChessPiece()
 {
 }
+
+char ChessPiece::getName()
+{
+	return this->_name;
+}
