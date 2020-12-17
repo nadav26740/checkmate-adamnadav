@@ -1,6 +1,6 @@
 #include "Board.h"
 
-void Board::createPiece(int cords[2], int pieceType)
+void Board::createPiece(int cords[2], int pieceType, bool isWhite)
 {
     if (boardPieces[8 * cords[0] + cords[1]] != nullptr)
     {
@@ -11,27 +11,27 @@ void Board::createPiece(int cords[2], int pieceType)
     switch (pieceType)
     {
     case 0:
-        boardPieces[8 * cords[0] + cords[1]] = new Pawn;
+        boardPieces[8 * cords[0] + cords[1]] = new Pawn(cords, isWhite);
         break;
 
     case 1:
-        boardPieces[8 * cords[0] + cords[1]] = new Bishop;
+        boardPieces[8 * cords[0] + cords[1]] = new Bishop(cords, isWhite);
         break;
 
     case 2:
-        boardPieces[8 * cords[0] + cords[1]] = new King;
+        boardPieces[8 * cords[0] + cords[1]] = new King(cords, isWhite);
         break;
 
     case 3:
-        boardPieces[8 * cords[0] + cords[1]] = new Queen;
+        boardPieces[8 * cords[0] + cords[1]] = new Queen(cords, isWhite);
         break;
 
     case 4:
-        boardPieces[8 * cords[0] + cords[1]] = new Knight;
+        boardPieces[8 * cords[0] + cords[1]] = new Knight(cords, isWhite);
         break;
 
     case 5:
-        boardPieces[8 * cords[0] + cords[1]] = new Rock;
+        boardPieces[8 * cords[0] + cords[1]] = new Rock(cords, isWhite);
         break;
 
     default:
