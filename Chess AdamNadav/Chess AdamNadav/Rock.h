@@ -2,8 +2,7 @@
 #include <iostream>
 
 #include "ChessPiece.h"
-class Rock :
-    public ChessPiece
+class Rock : public ChessPiece
 {
 private:
     bool checkPath(int* newCord);

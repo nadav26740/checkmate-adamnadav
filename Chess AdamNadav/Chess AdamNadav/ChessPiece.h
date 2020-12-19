@@ -3,10 +3,11 @@
 
 class ChessPiece
 {
-private:
+protected:
 	int  _cords[2]; // { x, y }
 	bool _white;
 	char _name;
+
 public:
 	ChessPiece(int cords[2], bool white);
 	virtual ~ChessPiece();

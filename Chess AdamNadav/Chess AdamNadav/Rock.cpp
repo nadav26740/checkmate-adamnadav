@@ -6,4 +6,5 @@ Rock::Rock(int cords[2], bool white) : ChessPiece(cords, white)
 
 void Rock::move(int* newCord)
 {
+	this->_cords;
 }
