@@ -6,11 +6,11 @@ class Knight :
     public ChessPiece
 {
 private:
-    bool checkPath(int* newCord);
+    bool checkPath(int* newCord); // help
 
 public:
-    Knight(int cords[2], bool white);
-    virtual void move(int* newCord) override;
+    Knight(int cords[2], bool white, Board* gameBoard);
+    virtual void move(int* newCord);
 
 };
 

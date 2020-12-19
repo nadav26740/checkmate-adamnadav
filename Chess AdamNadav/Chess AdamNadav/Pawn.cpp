@@ -1,6 +1,6 @@
 #include "Pawn.h"
 
-Pawn::Pawn(int cords[2], bool white) : ChessPiece(cords, white)
+Pawn::Pawn(int cords[2], bool white, Board* gameBoard) : ChessPiece(cords, white, gameBoard)
 {
 }
 

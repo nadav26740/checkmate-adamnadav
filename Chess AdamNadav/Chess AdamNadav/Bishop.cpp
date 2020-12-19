@@ -1,6 +1,6 @@
 #include "Bishop.h"
 
-Bishop::Bishop(int cords[2], bool white) : ChessPiece(cords, white)
+Bishop::Bishop(int cords[2], bool white, Board* gameBoard) : ChessPiece(cords, white, gameBoard)
 {
 }
 
