@@ -6,6 +6,6 @@
 class GameFunctions
 {
 public:
-	static ChessPiece* createPieceChar(char type); // getting char and creating Dynamic ChessPiece
+	static ChessPiece* createPieceChar(char type); // getting char and creating Dynamic ChessPiece	
 };
 
