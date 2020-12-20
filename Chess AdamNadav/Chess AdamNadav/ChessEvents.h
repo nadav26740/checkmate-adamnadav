@@ -13,6 +13,14 @@ enum { // events Defines
 	VALIED_CHESS_MATE // 8
 };
 
+
+typedef struct eventDetails
+{
+	int eventType;
+	std::string explain;
+} eventDetails;
+
+
 class ChessEvents
 {
 private:
@@ -20,14 +28,9 @@ private:
 
 public:
 	ChessEvents();
-	ChessEvents(int eventNum, std::string Explain);
+	ChessEvents(int eventNum, std::string explain);
 	~ChessEvents();
-	eventDetails getDetails();
-	void setEvent(int eventNum, std::string Explain);
+	struct eventDetails getDetails();
+	void setEvent(int eventNum, std::string explain);
 };
 
-
-typedef struct eventDetails
-{
-
-} eventDetails;

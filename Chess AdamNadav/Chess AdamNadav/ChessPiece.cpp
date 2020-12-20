@@ -9,6 +9,7 @@ ChessPiece::ChessPiece(int cords[2], bool white, Board* gameBoard)
 
 ChessPiece::~ChessPiece()
 {
+	
 }
 
 char ChessPiece::getName()
