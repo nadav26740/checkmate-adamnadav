@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "ChessPiece.h"
+
 class King :
     public ChessPiece
 {
