@@ -17,8 +17,3 @@ char ChessPiece::getName()
 	return this->_name;
 }
 
-void ChessPiece::setLocation(int* cords)
-{
-	this->_cords[0] = *cords;
-	this->_cords[1] = *(cords + 1);
-}

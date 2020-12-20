@@ -21,7 +21,7 @@ typedef struct eventDetails
 } eventDetails;
 
 
-class ChessEvents
+class ChessEvents : public std::exception
 {
 private:
 	eventDetails _details;

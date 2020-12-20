@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Board.h"
 #include "ChessEvents.h"
-#include "GameFunctions.h"
 
 class ChessPiece
 {
@@ -12,6 +11,7 @@ protected:
 	char _name;
 	Board* _gameBoard;
 	ChessEvents _gameEvent;
+
 public:
 	ChessPiece(int cords[2], bool white, Board* gameBoard);
 	virtual ~ChessPiece();
@@ -21,6 +21,4 @@ public:
 	char getName();
 	eventDetails getDetails();
 
-	//setter
-	void setLocation(int* cords);
 };
