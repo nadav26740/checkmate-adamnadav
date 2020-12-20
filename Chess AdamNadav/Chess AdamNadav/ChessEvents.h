@@ -15,5 +15,19 @@ enum { // events Defines
 
 class ChessEvents
 {
+private:
+	eventDetails _details;
+
+public:
+	ChessEvents();
+	ChessEvents(int eventNum, std::string Explain);
+	~ChessEvents();
+	eventDetails getDetails();
+	void setEvent(int eventNum, std::string Explain);
 };
 
+
+typedef struct eventDetails
+{
+
+} eventDetails;
