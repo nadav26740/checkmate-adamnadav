@@ -11,7 +11,6 @@ enum { // events Defines
 	INVALIED_PIECE_MOVE, // 6
 	INVALIED_SOURCE_EQL_DEST, // 7
 	VALIED_CHESS_MATE, // 8
-	TEST
 };
 
 
