@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Board.h"
 #include "ChessEvents.h"
+#include "GameFunctions.h"
 
 class ChessPiece
 {
@@ -19,4 +20,7 @@ public:
 	bool getWhite(); // return _White
 	char getName();
 	eventDetails getDetails();
+
+	//setter
+	void setLocation(int* cords);
 };
