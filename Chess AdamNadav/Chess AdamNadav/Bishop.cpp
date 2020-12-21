@@ -2,6 +2,7 @@
 
 bool Bishop::checkPath(int* newCord)
 {
+
     return false;
 }
 

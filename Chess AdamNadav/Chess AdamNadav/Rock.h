@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
-
+#include "GameFunctions.h"
 #include "ChessPiece.h"
+
 class Rock : public ChessPiece
 {
 private:

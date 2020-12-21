@@ -43,7 +43,6 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 
 	default:
 		newPiece = nullptr;
-		throw "Iliegal type!";
 	}
 	return newPiece;
 }

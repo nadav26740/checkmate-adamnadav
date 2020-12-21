@@ -12,6 +12,11 @@ ChessPiece::~ChessPiece()
 	
 }
 
+bool ChessPiece::getWhite()
+{
+	return _white;
+}
+
 char ChessPiece::getName()
 {
 	return this->_name;
