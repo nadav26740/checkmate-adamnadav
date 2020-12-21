@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "ChessEvents.h"
 
+class GameFunctions;
 class ChessPiece
 {
 protected:
