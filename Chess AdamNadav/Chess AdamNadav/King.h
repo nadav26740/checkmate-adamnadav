@@ -12,6 +12,6 @@ private:
 public:
     King(int cords[2], bool white, Board* gameBoard);
     virtual void move(int* newCord);
-
+    bool chessCheck();
 };
 
