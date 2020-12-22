@@ -6,20 +6,23 @@
 */
 bool King::checkPath(int* newCord)
 {
-	ChessPiece* destPiece = NULL;
+	bool destPiece = false;
 	char destChar = this->_gameBoard->CheckCoard(newCord);// gets the name of the piece in the new cord
 
 	if (destChar != '#')// checks if there is a piece in the place of the new cord
 	{
-		ChessPiece* destPiece = GameFunctions::createPieceChar(destChar);
+		if (destChar <= 'Z')
+		{
+			destPiece = true;
+		}
 	}
 	
 
-	if (destPiece != NULL && destPiece->getWhite() == this->getWhite())// check if the piece is of the same color
+	if (destChar != '#' && destPiece == this->_white)// check if the piece is of the same color
 	{
-		throw ChessEvents(/*num*/, /*explanation*/);
+		throw ChessEvents(INVALIED_DEST_PIECE_OWN, "In The Dest there is your own Piece");
 	}
-	else if (abs(*newCord - this->getlocation()[0]) > 1 || abs(*(newCord + 1) - this->getlocation()[1]) > 1)// check if legal move
+	else if (abs(*newCord - this->_cords[0]) > 1 || abs(*(newCord + 1) - this->_cords[1]) > 1)// check if legal move
 	{
 		throw ChessEvents(/*num*/, /*explanation*/);
 	}
@@ -48,14 +51,14 @@ King::King(int cords[2], bool white, Board* gameBoard) : ChessPiece(cords, white
 
 void King::move(int* newCord)
 {
-	if (this->checkPath(newCord))
+	try
 	{
-		this->setLocation(newCord);
-		this->_cords[0] = *newCord;
-		this->_cords[1] = *(newCord + 1);
+	this->checkPath(newCord);
+	this->_cords[0] = (newCord[0]);
+	this->_cords[1] = (newCord[1]);
 	}
-	else
+	catch (ChessEvents& e )
 	{
-		throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "");
+		throw e;
 	}
 }
