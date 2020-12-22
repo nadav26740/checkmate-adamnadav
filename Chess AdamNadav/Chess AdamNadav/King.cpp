@@ -13,17 +13,31 @@ bool King::checkPath(int* newCord)
 	{
 		ChessPiece* destPiece = GameFunctions::createPieceChar(destChar);
 	}
+	
 
 	if (destPiece != NULL && destPiece->getWhite() == this->getWhite())// check if the piece is of the same color
 	{
-		return false;
+		throw ChessEvents(/*num*/, /*explanation*/);
 	}
 	else if (abs(*newCord - this->getlocation()[0]) > 1 || abs(*(newCord + 1) - this->getlocation()[1]) > 1)// check if legal move
 	{
-		return false;
+		throw ChessEvents(/*num*/, /*explanation*/);
+	}
+	else if (*(newCord) > 63 || *(newCord + 1) > 63 || *(newCord) < 0 || *(newCord + 1) < 0)// check if new cord is out the board 
+	{
+		throw ChessEvents(/*num*/, /*explanation*/);
+	}
+	else if ()//
+	{
+
+	}
+	else if ()
+	{
+
 	}
 	else
 	{
+		this->_gameEvent.setEvent(VALIED_MOVE, "valid move");
 		return true;
 	}
 }
@@ -42,6 +56,6 @@ void King::move(int* newCord)
 	}
 	else
 	{
-		throw(ChessEvents(ChessEvents(INVALIED_PIECE_NOT_ALLOWED)));
+		throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "");
 	}
 }
