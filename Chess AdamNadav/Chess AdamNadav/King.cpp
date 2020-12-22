@@ -16,6 +16,7 @@ bool King::checkPath(int* newCord)
 			destPiece = true;
 		}
 	}
+	
 
 	if (destChar != '#' && destPiece == this->_white)// check if the piece is of the same color
 	{
@@ -23,10 +24,23 @@ bool King::checkPath(int* newCord)
 	}
 	else if (abs(*newCord - this->_cords[0]) > 1 || abs(*(newCord + 1) - this->_cords[1]) > 1)// check if legal move
 	{
-		return false;
+		throw ChessEvents(/*num*/, /*explanation*/);
+	}
+	else if (*(newCord) > 63 || *(newCord + 1) > 63 || *(newCord) < 0 || *(newCord + 1) < 0)// check if new cord is out the board 
+	{
+		throw ChessEvents(/*num*/, /*explanation*/);
+	}
+	else if ()//
+	{
+
+	}
+	else if ()
+	{
+
 	}
 	else
 	{
+		this->_gameEvent.setEvent(VALIED_MOVE, "valid move");
 		return true;
 	}
 }
