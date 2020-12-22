@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+
 #include "ChessPiece.h"
 
 class King :
@@ -11,5 +12,6 @@ private:
 public:
     King(int cords[2], bool white, Board* gameBoard);
     virtual void move(int* newCord);
+
 };
 
