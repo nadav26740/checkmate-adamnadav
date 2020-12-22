@@ -3,6 +3,8 @@
 #include "Board.h"
 #include "ChessEvents.h"
 
+
+class Board;
 class GameFunctions;
 class ChessPiece
 {

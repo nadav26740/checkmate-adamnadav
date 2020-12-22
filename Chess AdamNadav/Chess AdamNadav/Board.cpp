@@ -51,6 +51,11 @@ Board::~Board()
 	boardPieces.clear();
 }
 
+void Board::setBoard(std::string newBoard)
+{
+	boardPieces = newBoard;
+}
+
 std::string Board::getBoard()
 {
 	return std::string(boardPieces);
@@ -86,5 +91,6 @@ void Board::move(int oldCord[2], int newCords[2])
 
 void Board::resetBoard()
 {
-	boardPieces = "RNBKQBNRPPPPPPPP################################pppppppprnbkqbnr";
+	boardPieces = "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR";
 }
+
