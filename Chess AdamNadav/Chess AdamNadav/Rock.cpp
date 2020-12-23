@@ -47,7 +47,7 @@ bool Rock::checkPath(int* newCord)
 		}
 	}
 
-	while (tempcords[0] == newCord[0] && tempcords[1] == newCord[1]) // check if the rook doesn't jumping over other chess piece
+	while (tempcords[0] != newCord[0] || tempcords[1] != newCord[1]) // check if the rook doesn't jumping over other chess piece
 	{
 		if (tempcords[0] > newCord[0])
 		{
@@ -65,7 +65,7 @@ bool Rock::checkPath(int* newCord)
 		{
 			tempcords[1]++;
 		}
-		if (this->_gameBoard->CheckCoard(tempcords) != '#')
+		if (!(tempcords[0] == newCord[0] && tempcords[1] == newCord[1]) && this->_gameBoard->CheckCoard(tempcords) != '#')
 		{
 			throw ChessEvents(INVALIED_PIECE_MOVE, "The rook jumping over a piece");
 			return false;
@@ -77,6 +77,7 @@ bool Rock::checkPath(int* newCord)
 
 Rock::Rock(int cords[2], bool white, Board* gameBoard) : ChessPiece(cords, white, gameBoard)
 {
+	this->_name = 'r';
 }
 
 void Rock::move(int* newCord)
