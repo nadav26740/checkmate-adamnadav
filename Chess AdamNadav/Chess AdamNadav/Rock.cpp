@@ -41,10 +41,12 @@ bool Rock::checkPath(int* newCord)
 		tempPiece = GameFunctions::createPieceChar(this->_gameBoard->CheckCoard(newCord), newCord, this->_gameBoard);
 		if (tempPiece != nullptr && tempPiece->getWhite() == this->_white)
 		{
+			delete tempPiece;
 			throw ChessEvents(INVALIED_DEST_PIECE_OWN, "In the dest there your own Piece");
 			return false;
-
 		}
+		delete tempPiece;
+
 	}
 
 	while (tempcords[0] != newCord[0] || tempcords[1] != newCord[1]) // check if the rook doesn't jumping over other chess piece

@@ -58,6 +58,10 @@ void GameFunctions::stringToCords(int oldCords[2], int newCords[2], std::string 
 	{
 		throw ChessEvents(INVALIED_OUT_OF_INDEX, "The cords out of index");
 	}
+	if (stringCords[0] == stringCords[2] && stringCords[1] == stringCords[3])
+	{
+		throw ChessEvents(INVALIED_SOURCE_EQL_DEST, "The source cords and the dest equal");
+	}
 
 	// converting the cords to cords we using
 	oldCords[1] = stringCords[0] - 'a';

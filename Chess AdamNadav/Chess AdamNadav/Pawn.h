@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "GameFunctions.h"
 #include "ChessPiece.h"
 
 class Pawn :

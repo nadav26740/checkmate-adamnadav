@@ -70,26 +70,30 @@ void main()
 		try
 		{
 			GameFunctions::stringToCords(oldCords, newCords, msgFromGraphics);
-			tempPiece = GameFunctions::createPieceChar(gameBoard.CheckCoard(oldCords), oldCords, &gameBoard);
+			tempPiece = GameFunctions::createPieceChar(gameBoard.CheckCoard(oldCords), oldCords, &gameBoard); // creating piece
 
 			if (tempPiece == nullptr) // check if there is piece
 			{
 				throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "There is no piece in the location");
 			}
+
 			else if (tempPiece->getWhite() != whitePlaying) // check the piece belone to the currect player
 			{
 				throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "You Doesn't own the piece");
 			}
 			
-			tempPiece->move(newCords);
+			tempPiece->move(newCords); // trying to move the piece
 			msgToGraphics[0] = (char)(tempPiece->getDetails().eventType + '0');
 			cout << tempPiece->getDetails().explain << endl;
+			GameFunctions::switchPlayer(whitePlaying); // switching player
 		}
-		catch (ChessEvents& e)
+
+		catch (ChessEvents& e) // error found or checkmate
 		{
-			msgToGraphics[0] = (char)(e.getDetails().eventType + '0');
+			msgToGraphics[0] = (char)(e.getDetails().eventType + '0');  // creating the msg 
 			cout << e.getDetails().explain << endl;
 		}
+
 		msgToGraphics[1] = 0;
 		cout << "Start:" << oldCords[0] << " " << oldCords[1] << endl << newCords[0] << " " << newCords[1] << endl;
 		cout << gameBoard.getBoardString() << endl;
@@ -106,7 +110,6 @@ void main()
 
 		// get message from graphics
 		msgFromGraphics = p.getMessageFromGraphics();
-		GameFunctions::switchPlayer(whitePlaying);
 	}
 
 	p.close();
