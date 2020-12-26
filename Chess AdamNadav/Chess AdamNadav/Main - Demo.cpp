@@ -4,7 +4,7 @@
 #include "GameFunctions.h"
 #include "ChessPiece.h"
 
-int main()
+/* int main()
 {
 	int oldCords[2] = { 0 , 0 };
 	int newCords[2] = { 6 , 0 };
@@ -18,4 +18,4 @@ int main()
 	delete temp;
 	delete gameBoard;
 	return 0;
-}
+} Demo*/ 

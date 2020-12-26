@@ -92,12 +92,16 @@ void Board::move(int oldCord[2], int newCords[2])
 {
 	char temp = 0;
 	temp = boardPieces[8 * oldCord[0] + oldCord[1]];
+	if (boardPieces[8 * newCords[0] + newCords[1]] == 'k' || boardPieces[8 * newCords[0] + newCords[1]] == 'K')
+	{
+		throw ChessEvents(VALIED_CHESS_MATE, "Check mate has been happend");
+	}
 	boardPieces[8 * newCords[0] + newCords[1]] = temp;
 	boardPieces[8 * oldCord[0] + oldCord[1]] = '#';
 }
 
 void Board::resetBoard()
 {
-	boardPieces = "rnbkqbnr#ppppppp################################PPPPPPPPRNBKQBNR";
+	boardPieces = "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR";
 }
 

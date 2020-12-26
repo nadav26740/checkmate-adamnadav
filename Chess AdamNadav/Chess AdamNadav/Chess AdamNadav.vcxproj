@@ -147,8 +147,11 @@
     <ClInclude Include="King.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Pawn.h" />
+    <ClInclude Include="Pipe.h" />
     <ClInclude Include="Queen.h" />
     <ClInclude Include="Rock.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bishop.cpp" />
@@ -158,10 +161,12 @@
     <ClCompile Include="GameFunctions.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Main - Demo.cpp" />
     <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
