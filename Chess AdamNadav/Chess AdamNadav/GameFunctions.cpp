@@ -46,3 +46,23 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 	}
 	return newPiece;
 }
+
+bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
+{
+	char king = '#';
+
+	if (isWhite)
+	{
+		king = 'K';
+	}
+	else
+	{
+		king = 'k'
+	}
+
+	for (i = 0; i < 8; i++)
+	{
+
+	}
+	return false;
+}
