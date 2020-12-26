@@ -102,6 +102,6 @@ void Board::move(int oldCord[2], int newCords[2])
 
 void Board::resetBoard()
 {
-	boardPieces = "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR";
+	boardPieces = "rnbkqbnr#ppppppp################################PPPPPPPPRNBKQBNR";
 }
 
