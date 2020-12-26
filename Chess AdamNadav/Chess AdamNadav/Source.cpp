@@ -7,6 +7,7 @@ in order to read and write information from and to the Backend
 #include "Board.h"
 #include "GameFunctions.h"
 #include "ChessPiece.h"
+#include "ChessEvents.h"
 #include "Pipe.h"
 #include <iostream>
 #include <thread>
@@ -20,7 +21,7 @@ using std::string;
 void main()
 {
 	srand(time_t(NULL));
-
+	bool whitePlaying = false;
 	
 	Pipe p;
 	bool isConnect = p.connect();
@@ -47,12 +48,15 @@ void main()
 	
 
 	char msgToGraphics[1024];
-	std::string temp;
+	std::string tempString;
+	ChessPiece* tempPiece;
+	int newCords[2];
+	int oldCords[2];
+
 	// msgToGraphics should contain the board string accord the protocol
-	// YOUR CODE
 	Board gameBoard;
-	temp = gameBoard.getBoard() + '1';
-	strcpy_s(msgToGraphics, temp.c_str()); 
+	tempString = gameBoard.getBoard() + '1';
+	strcpy_s(msgToGraphics, tempString.c_str());
 	
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
 
@@ -63,14 +67,41 @@ void main()
 	{
 		// should handle the string the sent from graphics
 		// according the protocol. Ex: e2e4           (move e2 to e4)
-		
-		// YOUR CODE
-		strcpy_s(msgToGraphics, "YOUR CODE"); // msgToGraphics should contain the result of the operation
+		try
+		{
+			GameFunctions::stringToCords(oldCords, newCords, msgFromGraphics);
+			tempPiece = GameFunctions::createPieceChar(gameBoard.CheckCoard(oldCords), oldCords, &gameBoard); // creating piece
+
+			if (tempPiece == nullptr) // check if there is piece
+			{
+				throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "There is no piece in the location");
+			}
+
+			else if (tempPiece->getWhite() != whitePlaying) // check the piece belone to the currect player
+			{
+				throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "You Doesn't own the piece");
+			}
+			
+			tempPiece->move(newCords); // trying to move the piece
+			msgToGraphics[0] = (char)(tempPiece->getDetails().eventType + '0');
+			cout << tempPiece->getDetails().explain << endl;
+			GameFunctions::switchPlayer(whitePlaying); // switching player
+		}
+
+		catch (ChessEvents& e) // error found or checkmate
+		{
+			msgToGraphics[0] = (char)(e.getDetails().eventType + '0');  // creating the msg 
+			cout << e.getDetails().explain << endl;
+		}
+
+		msgToGraphics[1] = 0;
+		cout << "Start:" << oldCords[0] << " " << oldCords[1] << endl << newCords[0] << " " << newCords[1] << endl;
+		cout << gameBoard.getBoardString() << endl;
 
 		/******* JUST FOR EREZ DEBUGGING ******/
-		int r = rand() % 10; // just for debugging......
-		msgToGraphics[0] = (char)(1 + '0');
-		msgToGraphics[1] = 0;
+		// int r = rand() % 10; // just for debugging......
+		// msgToGraphics[0] = (char)(1 + '0');
+		// 
 		/******* JUST FOR EREZ DEBUGGING ******/
 
 

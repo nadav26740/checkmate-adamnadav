@@ -1,4 +1,5 @@
 #pragma once
+#include "ChessEvents.h"
 #include "ChessPiece.h" 
 #include "King.h"
 #include "Bishop.h"
@@ -20,6 +21,8 @@ class GameFunctions
 {
 public:
 	static ChessPiece* createPieceChar(char type, int cords[2], Board* gameBoard); // getting char and creating Dynamic ChessPiece
-	bool checkCheck(Board* gameBoard, bool isWhite);
+	static bool checkCheck(Board* gameBoard, bool isWhite);
+	static void stringToCords(int oldCords[2], int newCords[2], std::string stringCords);
+	static void switchPlayer(bool& currect);
 };
 

@@ -43,26 +43,41 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 
 	default:
 		newPiece = nullptr;
+		
 	}
 	return newPiece;
 }
 
-bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
+void GameFunctions::stringToCords(int oldCords[2], int newCords[2], std::string stringCords)
 {
-	char king = '#';
-
-	if (isWhite)
+	// check the cords our valid
+	if (stringCords[0] < 'a' || stringCords[0] > 'h'
+		|| stringCords[2] < 'a' || stringCords[2] > 'h'
+		|| stringCords[1] < '1' || stringCords[1] > '8'
+		|| stringCords[3] < '1' || stringCords[3] > '8')
 	{
-		king = 'K';
+		throw ChessEvents(INVALIED_OUT_OF_INDEX, "The cords out of index");
+	}
+	if (stringCords[0] == stringCords[2] && stringCords[1] == stringCords[3])
+	{
+		throw ChessEvents(INVALIED_SOURCE_EQL_DEST, "The source cords and the dest equal");
+	}
+
+	// converting the cords to cords we using
+	oldCords[1] = stringCords[0] - 'a';
+	oldCords[0] = 7 - (stringCords[1] - '1');
+	newCords[1] = stringCords[2] - 'a';
+	newCords[0] = 7 - (stringCords[3] - '1');
+}
+
+void GameFunctions::switchPlayer(bool& currect)
+{
+	if (currect)
+	{
+		currect = false;
 	}
 	else
 	{
-		king = 'k'
+		currect = true;
 	}
-
-	for (i = 0; i < 8; i++)
-	{
-
-	}
-	return false;
 }

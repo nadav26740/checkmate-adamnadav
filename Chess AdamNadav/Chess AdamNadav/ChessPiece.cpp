@@ -23,3 +23,8 @@ char ChessPiece::getName()
 	return this->_name;
 }
 
+eventDetails ChessPiece::getDetails()
+{
+	return this->_gameEvent.getDetails();
+}
+

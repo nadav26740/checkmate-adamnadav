@@ -2,6 +2,8 @@
 
 ChessEvents::ChessEvents()
 {
+	this->_details.eventType = 0;
+	this->_details.explain = "";
 }
 
 ChessEvents::ChessEvents(int eventNum, std::string explain)
