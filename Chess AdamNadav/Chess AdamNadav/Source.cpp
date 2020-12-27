@@ -49,7 +49,7 @@ void main()
 
 	char msgToGraphics[1024];
 	std::string tempString;
-	ChessPiece* tempPiece;
+	ChessPiece* tempPiece = nullptr;
 	int newCords[2];
 	int oldCords[2];
 
@@ -112,6 +112,10 @@ void main()
 
 		// get message from graphics
 		msgFromGraphics = p.getMessageFromGraphics();
+		if (tempPiece != nullptr)
+		{
+			delete tempPiece;
+		}
 	}
 
 	p.close();

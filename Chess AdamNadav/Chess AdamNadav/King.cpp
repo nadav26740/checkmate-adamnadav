@@ -54,6 +54,7 @@ void King::move(int* newCord)
 	try
 	{
 	this->checkPath(newCord);
+	this->_gameBoard->move(this->_cords, newCord);
 	this->_cords[0] = (newCord[0]);
 	this->_cords[1] = (newCord[1]);
 	}
