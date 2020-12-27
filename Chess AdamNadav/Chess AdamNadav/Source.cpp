@@ -21,7 +21,7 @@ using std::string;
 void main()
 {
 	srand(time_t(NULL));
-	bool whitePlaying = false;
+	bool whitePlaying = true;
 	
 	Pipe p;
 	bool isConnect = p.connect();
@@ -55,7 +55,9 @@ void main()
 
 	// msgToGraphics should contain the board string accord the protocol
 	Board gameBoard;
-	tempString = gameBoard.getBoard() + '1';
+	GameFunctions::switchPlayer(whitePlaying); // switching player
+	tempString = gameBoard.getBoard() + (char)(whitePlaying + '0');
+	GameFunctions::switchPlayer(whitePlaying); // switching player
 	strcpy_s(msgToGraphics, tempString.c_str());
 	
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string

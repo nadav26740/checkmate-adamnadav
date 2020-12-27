@@ -34,9 +34,9 @@ bool Pawn::checkPath(int* newCord)
 			throw ChessEvents(INVALIED_DEST_PIECE_OWN, "in the dest there is your own piece");
 		}
 	}
-	delete temp;
 
-	if (!(this->_cords[0] + side == newCord[0] || (firstmove && this->_cords[0] + (2 * side) == newCord[0])))
+	if (!(this->_cords[0] + side == newCord[0] || 
+		((firstmove && this->_cords[0] + (2 * side) == newCord[0]) && this->_gameBoard->CheckCoard(newCord[0] - (side), newCord[1]) == '#')))
 	{
 		throw ChessEvents(INVALIED_PIECE_MOVE, "Pawn can't move like that");
 	}
