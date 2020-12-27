@@ -1,5 +1,7 @@
 #include "GameFunctions.h"
 
+using namespace std;
+
 ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameBoard)
 {
 	bool isWhite = false;
@@ -46,6 +48,35 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 		
 	}
 	return newPiece;
+}
+
+bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
+{
+	int i = 0;
+	//int j = 0;
+	int* kingCord = new int(2);
+	string currKing = "#";
+	string gameBoardString = gameBoard->getBoardString();
+
+
+	if (isWhite)
+	{
+		currKing = 'K';
+	}
+	else
+	{
+		currKing = 'k';
+	}
+
+	for (i = 0; i < 63; i++)
+	{
+		if (gameBoardString[i] == currKing)
+		{
+			//kingCord[0] = 
+			//kingCord[1] = 
+		}
+	}
+	return false;
 }
 
 void GameFunctions::stringToCords(int oldCords[2], int newCords[2], std::string stringCords)
