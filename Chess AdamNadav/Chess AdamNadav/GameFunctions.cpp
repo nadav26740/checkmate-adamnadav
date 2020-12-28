@@ -52,6 +52,7 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 
 bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
 {
+	bool ret = false;
 	int i = 0;
 	int j = 0;
 	int* kingCord = new int(2);
@@ -79,11 +80,27 @@ bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
 		}
 	}
 
-	//for (i = kingCord[0]; i < 7; i++)
-	//{
-	//	if()
-	//}
-	return false;
+	for (i = kingCord[0]; i < 7; i++)
+	{
+		if (/*cord[i][kingCord[1]] == my pice*/)
+		{
+			ret = false;
+		}
+		else if (/*cord[i][kingCord[1]] == not my but not dangorues*/)
+		{
+			ret = false;
+		}
+		else if (/*cord[i][kingCord[1]] == not my dangorous*/)
+		{
+			ret = true;
+		}
+		else// incase i missed something
+		{
+			ret = false;
+		}
+	}
+
+	return ret
 }
 
 void GameFunctions::stringToCords(int oldCords[2], int newCords[2], std::string stringCords)
