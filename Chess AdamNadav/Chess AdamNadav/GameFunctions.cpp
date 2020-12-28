@@ -52,29 +52,36 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 
 bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
 {
-	//int i = 0;
-	////int j = 0;
-	//int* kingCord = new int(2);
-	//string currKing = "#";
-	//string gameBoardString = gameBoard->getBoardString();
+	int i = 0;
+	int j = 0;
+	int* kingCord = new int(2);
+	string currKing = "#";
+	string singleString = "#";
+	string gameBoardString = gameBoard->getBoardString();
 
 
-	//if (isWhite)
-	//{
-	//	currKing = 'K';
-	//}
-	//else
-	//{
-	//	currKing = 'k';
-	//}
+	if (isWhite)
+	{
+		currKing = "K";
+	}
+	else
+	{
+		currKing = "k";
+	}
 
-	//for (i = 0; i < 63; i++)
+	for (i = 0; i < 63; i++)
+	{
+		singleString = gameBoardString[i];
+		if (singleString.compare(currKing))
+		{
+			kingCord[0] = (i % 7) - 1;
+			kingCord[1] = i / 7;
+		}
+	}
+
+	//for (i = kingCord[0]; i < 7; i++)
 	//{
-	//	if (gameBoardString[i] == currKing)
-	//	{
-	//		//kingCord[0] = 
-	//		//kingCord[1] = 
-	//	}
+	//	if()
 	//}
 	return false;
 }
