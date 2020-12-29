@@ -28,7 +28,7 @@ bool King::checkPath(int* newCord)
 		throw ChessEvents(INVALIED_PIECE_MOVE, "The King Doing invalid move that he can't do!");
 		return false;
 	}
-	else if (*(newCord) >= 7 || *(newCord + 1) >= 7 || *(newCord) <= 0 || *(newCord + 1) <= 0)// check if new cord is out the board 
+	else if (*(newCord) > 7 || *(newCord + 1) > 7 || *(newCord) < 0 || *(newCord + 1) < 0)// check if new cord is out the board 
 	{
 		throw ChessEvents(INVALIED_OUT_OF_INDEX, "The index that's insert is out of index");
 		return false;
