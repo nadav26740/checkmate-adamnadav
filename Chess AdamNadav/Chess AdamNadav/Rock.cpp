@@ -23,7 +23,7 @@ bool Rock::checkPath(int* newCord)
 		return false;
 	}
 
-	else if (*(newCord) >= 7 || *(newCord + 1) >= 7 || *(newCord) <= 0 || *(newCord + 1) <= 0) // check if the index is valid
+	else if ((newCord[0] > 7 || (newCord[1] > 7 || (newCord[0] <= 0 || (newCord[1] < 0) // check if the index is valid
 	{
 		throw ChessEvents(INVALIED_OUT_OF_INDEX, "The index that's insert is out of index");
 		return false;
