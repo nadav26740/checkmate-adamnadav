@@ -103,8 +103,13 @@ bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
 	return ret;
 }
 
+
+/// Code Review Report !
 void GameFunctions::stringToCords(int oldCords[2], int newCords[2], std::string stringCords)
 {
+	// code review will sign by //*
+	//* should use struct of cords before for the code will be more understood able
+
 	// check the cords our valid
 	if (stringCords[0] < 'a' || stringCords[0] > 'h'
 		|| stringCords[2] < 'a' || stringCords[2] > 'h'
@@ -113,16 +118,20 @@ void GameFunctions::stringToCords(int oldCords[2], int newCords[2], std::string 
 	{
 		throw ChessEvents(INVALIED_OUT_OF_INDEX, "The cords out of index");
 	}
-	if (stringCords[0] == stringCords[2] && stringCords[1] == stringCords[3])
+	if (stringCords[0] == stringCords[2] && stringCords[1] == stringCords[3]) //* use the starct here also for the code be made more understood able
 	{
 		throw ChessEvents(INVALIED_SOURCE_EQL_DEST, "The source cords and the dest equal");
 	}
 
 	// converting the cords to cords we using
-	oldCords[1] = stringCords[0] - 'a';
-	oldCords[0] = 7 - (stringCords[1] - '1');
-	newCords[1] = stringCords[2] - 'a';
-	newCords[0] = 7 - (stringCords[3] - '1');
+
+	//* should use it at the start for make the to make the code more understood able as a temp varible only for the function
+	//* and than move it to the class varibales
+	oldCords[1] = stringCords[0] - 'a'; //* should change it to struct
+	oldCords[0] = 7 - (stringCords[1] - '1'); //* should change it to struct
+
+	newCords[1] = stringCords[2] - 'a'; //* should change it to struct
+	newCords[0] = 7 - (stringCords[3] - '1'); //* should change it to struct
 }
 
 void GameFunctions::switchPlayer(bool& currect)

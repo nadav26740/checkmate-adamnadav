@@ -1,0 +1,1 @@
+the chossen function for the code review is : GameFunctions::stringToCords
