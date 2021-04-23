@@ -53,52 +53,85 @@ ChessPiece* GameFunctions::createPieceChar(char type, int cords[2], Board* gameB
 bool GameFunctions::checkCheck(Board* gameBoard, bool isWhite)
 {
 	bool ret = false;
-	//int i = 0;
-	//int j = 0;
-	//int* kingCord = new int(2);
-	//string currKing = "#";
-	//string singleString = "#";
-	//string gameBoardString = gameBoard->getBoardString();
+	int i = 0;
+	int j = 0;
+	int kingCord = 0;
+	string currKing = "#";
+	string myR = "#";
+	string myN = "#";
+	string myB = "#";
+	string myQ = "#";
+	string myP = "#";
+	string enemyR = "#";
+	string enemyN = "#";
+	string enemyB = "#";
+	string enemyQ = "#";
+	string enemyP = "#";
+	string enemyK = "#";
+	string singleString = "#";
+	string gameBoardString = gameBoard->getBoardString();
 
 
-	//if (isWhite)
-	//{
-	//	currKing = "K";
-	//}
-	//else
-	//{
-	//	currKing = "k";
-	//}
+	if (isWhite)
+	{
+		currKing = "K";
+		myR = "R";
+		myN = "N";
+		myB = "B";
+		myQ = "Q";
+		myP = "P";
+		enemyR = "r";
+		enemyN = "n";
+		enemyB = "b";
+		enemyQ = "q";
+		enemyP = "p";
+		enemyK = "k";
+	}
+	else
+	{
+		currKing = "k";
+		myR = "r";
+		myN = "n";
+		myB = "b";
+		myQ = "q";
+		myP = "p";
+		enemyR = "R";
+		enemyN = "N";
+		enemyB = "B";
+		enemyQ = "Q";
+		enemyP = "P";
+		enemyK = "K";
+	}
 
-	//for (i = 0; i < 63; i++)
-	//{
-	//	singleString = gameBoardString[i];
-	//	if (singleString.compare(currKing))
-	//	{
-	//		kingCord[0] = (i % 7) - 1;
-	//		kingCord[1] = i / 7;
-	//	}
-	//}
+	for (i = 0; i < 63; i++)
+	{
+		singleString = gameBoardString[i];
+		if (singleString.compare(currKing))
+		{
+			kingCord = i;
+		}
+	}
 
-	//for (i = kingCord[0]; i < 7; i++)
-	//{
-	//	if (/*cord[i][kingCord[1]] == my pice*/)
-	//	{
-	//		ret = false;
-	//	}
-	//	else if (/*cord[i][kingCord[1]] == not my but not dangorues*/)
-	//	{
-	//		ret = false;
-	//	}
-	//	else if (/*cord[i][kingCord[1]] == not my dangorous*/)
-	//	{
-	//		ret = true;
-	//	}
-	//	else// incase i missed something
-	//	{
-	//		ret = false;
-	//	}
-	//}
+	for (i = kingCord; i < 64; i += 8)// checking above king
+	{
+		singleString = gameBoardString[i];
+		if (singleString.compare(myR) || singleString.compare(myN) || singleString.compare(myB) || singleString.compare(myQ) || singleString.compare(myP))
+		{
+			ret = false;
+		}
+		else if (singleString.compare(enemyB) || singleString.compare(enemyN) || singleString.compare(enemyP) || (singleString.compare(enemyK) && i - kingCord != 1))
+		{
+			ret = false;
+		}
+		else if ((singleString.compare(enemyK) && i - kingCord == 1))
+		{
+			ret = true;
+		}
+		else// incase i missed something
+		{
+			ret = false;
+		}
+	}
 
 	return ret;
 }
