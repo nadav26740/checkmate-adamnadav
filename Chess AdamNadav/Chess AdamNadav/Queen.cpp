@@ -19,7 +19,7 @@ bool Queen::checkPath(int* newCord)
 		throw ChessEvents(INVALIED_DEST_PIECE_OWN, "In The Dest there is your own Piece");
 		return false;
 	}
-	else if ((abs(*newCord - this->_cords[0]) != abs(*(newCord + 1) - this->_cords[1])) && (*newCord == this->_cords[0] && *(newCord + 1) == this->_cords[1]) && (*newCord != this->_cords[0] && *(newCord + 1) != this->_cords[1]))// check if legal move
+	else if (CheckMove::diagonalCheck(newCord, this->_cords) && CheckMove::lineCheck(newCord, this->_cords))// check if legal move
 	{
 		throw ChessEvents(INVALIED_PIECE_MOVE, "The King Doing invalid move that he can't do!");
 		return false;

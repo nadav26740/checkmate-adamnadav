@@ -23,7 +23,7 @@ bool King::checkPath(int* newCord)
 		throw ChessEvents(INVALIED_DEST_PIECE_OWN, "In The Dest there is your own Piece");
 		return false;
 	}
-	else if (abs(*newCord - this->_cords[0]) > 1 || abs(*(newCord + 1) - this->_cords[1]) > 1)// check if legal move
+	else if (CheckMove::stepCheck(newCord, this->_cords))// check if legal move
 	{
 		throw ChessEvents(INVALIED_PIECE_MOVE, "The King Doing invalid move that he can't do!");
 		return false;

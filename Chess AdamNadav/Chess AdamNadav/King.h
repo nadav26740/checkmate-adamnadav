@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include "checkMove.h"
 #include "ChessPiece.h"
 
 class King :

@@ -30,7 +30,7 @@ bool Rock::checkPath(int* newCord)
 
 	}
 
-	else if ((newCord[0] != this->_cords[0] && newCord[1] != this->_cords[1])) // check if the piece doesn't doing invalid move
+	else if (CheckMove::lineCheck(newCord, this->_cords)) // check if the piece doesn't doing invalid move
 	{
 		throw ChessEvents(INVALIED_PIECE_MOVE, "The Rook Doing invalid move that he can't do!");
 		return false;

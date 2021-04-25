@@ -2,6 +2,7 @@
 #include <iostream>
 #include "GameFunctions.h"
 #include "ChessPiece.h"
+#include "checkMove.h"
 
 class Rock : public ChessPiece
 {
