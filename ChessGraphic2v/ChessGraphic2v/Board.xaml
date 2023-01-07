@@ -1,0 +1,124 @@
+﻿<Page x:Class="ChessGraphic2v.Board"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChessGraphic2v"
+      mc:Ignorable="d" 
+      d:DesignHeight="825" d:DesignWidth="825"
+      Title="Board">
+
+    <Grid Background="#fafafa" x:Name="GridBoard">
+        <!--#region Grid Definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/>
+            <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/> <RowDefinition/>  <RowDefinition/> <RowDefinition/>
+            <RowDefinition/> <RowDefinition/>  <RowDefinition/> <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->     
+        <!--#region Colors-->
+        
+        <!--#region Chars Grid colors-->
+        <StackPanel Background="#212121"/>
+        <StackPanel Grid.Column="2" Background="#212121"/>
+        <StackPanel Grid.Column="4" Background="#212121"/>
+        <StackPanel Grid.Column="6" Background="#212121"/>
+        <StackPanel Grid.Column="8" Background="#212121"/>
+        <StackPanel Grid.Row="2" Background="#212121"/>
+        <StackPanel Grid.Row="4" Background="#212121"/>
+        <StackPanel Grid.Row="6" Background="#212121"/>
+        <StackPanel Grid.Row="8" Background="#212121"/>
+        <!--#endregion-->
+        
+        <!--#region Mid Slant-->
+        <StackPanel Grid.Row="1" Grid.Column="1" Background="#212121" MouseLeftButtonDown="StackPanel_MouseRightButtonDown"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Background="#212121" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="3" Grid.Column="3" Background="#212121" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="4" Grid.Column="4" Background="#212121"/>
+        <StackPanel Grid.Row="5" Grid.Column="5" Background="#212121"/>
+        <StackPanel Grid.Row="6" Grid.Column="6" Background="#212121"/>
+        <StackPanel Grid.Row="7" Grid.Column="7" Background="#212121"/>
+        <StackPanel Grid.Row="8" Grid.Column="8" Background="#212121"/>
+        <!--#endregion-->
+        <!--#region Above Slant-->
+        <StackPanel Grid.Row="1" Grid.Column="3" Background="#212121"/>
+        <StackPanel Grid.Row="1" Grid.Column="5" Background="#212121"/>
+        <StackPanel Grid.Row="1" Grid.Column="7" Background="#212121"/>
+        
+        <StackPanel Grid.Row="2" Grid.Column="4" Background="#212121"/>
+        <StackPanel Grid.Row="2" Grid.Column="6" Background="#212121"/>
+        <StackPanel Grid.Row="2" Grid.Column="8" Background="#212121"/>
+        
+        <StackPanel Grid.Row="3" Grid.Column="5" Background="#212121"/>
+        <StackPanel Grid.Row="3" Grid.Column="7" Background="#212121"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="6" Background="#212121"/>
+        <StackPanel Grid.Row="4" Grid.Column="8" Background="#212121"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="7" Background="#212121"/>
+        <StackPanel Grid.Row="6" Grid.Column="8" Background="#212121"/>
+        <!--#endregion-->
+        <!--#region Under Slant-->
+        <StackPanel Grid.Row="8" Grid.Column="2" Background="#212121"/>
+        <StackPanel Grid.Row="8" Grid.Column="4" Background="#212121"/>
+        <StackPanel Grid.Row="8" Grid.Column="6" Background="#212121"/>
+
+        <StackPanel Grid.Row="7" Grid.Column="1" Background="#212121"/>
+        <StackPanel Grid.Row="7" Grid.Column="3" Background="#212121"/>
+        <StackPanel Grid.Row="7" Grid.Column="5" Background="#212121"/>
+
+        <StackPanel Grid.Row="6" Grid.Column="4" Background="#212121"/>
+        <StackPanel Grid.Row="6" Grid.Column="2" Background="#212121"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Background="#212121"/>
+        <StackPanel Grid.Row="5" Grid.Column="3" Background="#212121"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="2" Background="#212121"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Background="#212121"/>
+        <!--#endregion-->
+        <!--#endregion-->
+        <!--#region Board Char Def-->
+        <!--#region Column-->
+        <Label Grid.Column="1" Content="A" HorizontalAlignment="Center" 
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="2" Content="B" HorizontalAlignment="Center" Foreground="#fafafa"
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="3" Content="C" HorizontalAlignment="Center" 
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="4" Content="D" HorizontalAlignment="Center" Foreground="#fafafa"
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="5" Content="E" HorizontalAlignment="Center" 
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="6" Content="F" HorizontalAlignment="Center" Foreground="#fafafa"
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="7" Content="G" HorizontalAlignment="Center" 
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Column="8" Content="H" HorizontalAlignment="Center" Foreground="#fafafa"
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <!--#endregion-->
+        <!--#region Row-->
+        <Label Grid.Row="1" Content="1" VerticalAlignment="Center" 
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="2" Content="2" VerticalAlignment="Center" Foreground="#fafafa"
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="3" Content="3" VerticalAlignment="Center" 
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="4" Content="4" VerticalAlignment="Center" Foreground="#fafafa"
+                   FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="5" Content="5" VerticalAlignment="Center" 
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="6" Content="6" VerticalAlignment="Center" Foreground="#fafafa"
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="7" Content="7" VerticalAlignment="Center" 
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="8" Content="8" VerticalAlignment="Center" Foreground="#fafafa"
+                       FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
+        <!--#endregion-->
+        <!--#endregion-->
+    </Grid>
+</Page>
