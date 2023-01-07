@@ -38,20 +38,22 @@ namespace ChessGraphic2v
             int j = Grid.GetRow(sened);
 
             ContentPresenter cp = new ContentPresenter();
-            ContentControl cc = new ContentControl();
-            cc.FontSize = 30;
+            Image cc = new Image();
             cp.IsHitTestVisible = false;
             cc.HorizontalAlignment = HorizontalAlignment.Center;
             cc.VerticalAlignment = VerticalAlignment.Center;
-            cc.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDFD991"));
-
-            cc.Content = "Testter";
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(@"pack://application:,,,/ResourcesPack/p_black.png", UriKind.Absolute);
+            image.EndInit();
+            cc.Margin = new Thickness(10);
+            cc.Source = image;
 
             cp.Content = cc;
             Grid.SetColumn(cp, i);
             Grid.SetRow(cp, j);
             GridBoard.Children.Add(cp);
-            MessageBox.Show(GridBoard.Children.IndexOf((UIElement)cp).ToString());
+            MessageBox.Show(GridBoard.Children.IndexOf(cp).ToString());
             cpm = cp;
         }
 

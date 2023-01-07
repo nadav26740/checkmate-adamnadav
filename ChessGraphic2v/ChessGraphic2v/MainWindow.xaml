@@ -4,19 +4,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGraphic2v"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600">
+        mc:Ignorable="d" Closed="Window_Closed"
+        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen" 
+        Icon="/ResourcesPack/Chess Knight icon.png">
     <Window.Background>
         <LinearGradientBrush EndPoint="-0.4,-0.2" StartPoint="1.2,1.2">
             <GradientStop Color="#2e7d32"/>
             <GradientStop Color="#66bb6a" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
-    <Grid>
+
+    <!--#region Storyboards-->
+    <Window.Resources>
+        <Storyboard x:Key="NotificationBorderStoryBoard" >
+            <ThicknessAnimation Storyboard.TargetName="NotificationBorder"
+                                Storyboard.TargetProperty="Margin" 
+                                                Duration="0:0:0.5"
+                                To="0,0,40,-10"/>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                BeginTime="0:0:6"
+                                                Duration="0:0:0.35"
+                                                To="0,0,40,-200"/>
+
+        </Storyboard>
+    </Window.Resources>
+    <!--#endregion-->
+    
+    <Grid ClipToBounds="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="850"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name="Framer" Width="825" Height="825"/>
+        <Frame x:Name="Framer" Width="825" Height="825" 
+               BorderBrush="#2C3E50"
+               BorderThickness="6" />
+        
+        <!--#region Notification Border-->
+        <Border Grid.Column="2" Grid.Row="2" Background="#FF3B556F" CornerRadius="25,25,0,0" Width="420" 
+                HorizontalAlignment="Right" Margin="0,0,40,-200" Height="180" VerticalAlignment="Bottom" ClipToBounds="True"
+                BorderBrush="#2C3E50" BorderThickness="8" Opacity="0.85"
+                x:Name="NotificationBorder">
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Name="NotificationIcon" Margin="20" CornerRadius="140" Width="100" Height="100" 
+                        BorderThickness="3" BorderBrush="#E74C3C" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="/ResourcesPack/x.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="Fant"/>
+                    </Border.Background>
+                </Border>
+                <TextBlock Grid.Column="2" VerticalAlignment="Center" Margin="10,0" x:Name="NotificationMessage"
+                           Text="Notification " FontSize="24" TextWrapping="Wrap" FontWeight="Bold"
+                           FontFamily="Franklin Gothic Demi">
+                </TextBlock>
+            </Grid>
+        </Border>
+        <!--#endregion-->
     </Grid>
 </Window>

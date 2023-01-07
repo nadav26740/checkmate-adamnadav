@@ -8,7 +8,12 @@
       d:DesignHeight="825" d:DesignWidth="825"
       Title="Board">
 
-    <Grid Background="#fafafa" x:Name="GridBoard">
+    <Page.Resources>
+        <SolidColorBrush x:Key="BlackSlotsColor" Color="#ECF0F1" /> 
+        <SolidColorBrush x:Key="WhiteSlotsColor" Color="#2C3E50" />
+    </Page.Resources>
+    
+    <Grid Background="{StaticResource WhiteSlotsColor}" x:Name="GridBoard">
         <!--#region Grid Definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
@@ -24,99 +29,99 @@
         <!--#region Colors-->
         
         <!--#region Chars Grid colors-->
-        <StackPanel Background="#212121"/>
-        <StackPanel Grid.Column="2" Background="#212121"/>
-        <StackPanel Grid.Column="4" Background="#212121"/>
-        <StackPanel Grid.Column="6" Background="#212121"/>
-        <StackPanel Grid.Column="8" Background="#212121"/>
-        <StackPanel Grid.Row="2" Background="#212121"/>
-        <StackPanel Grid.Row="4" Background="#212121"/>
-        <StackPanel Grid.Row="6" Background="#212121"/>
-        <StackPanel Grid.Row="8" Background="#212121"/>
+        <StackPanel Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         
         <!--#region Mid Slant-->
-        <StackPanel Grid.Row="1" Grid.Column="1" Background="#212121" MouseLeftButtonDown="StackPanel_MouseRightButtonDown"/>
-        <StackPanel Grid.Row="2" Grid.Column="2" Background="#212121" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="3" Grid.Column="3" Background="#212121" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="4" Grid.Column="4" Background="#212121"/>
-        <StackPanel Grid.Row="5" Grid.Column="5" Background="#212121"/>
-        <StackPanel Grid.Row="6" Grid.Column="6" Background="#212121"/>
-        <StackPanel Grid.Row="7" Grid.Column="7" Background="#212121"/>
-        <StackPanel Grid.Row="8" Grid.Column="8" Background="#212121"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseRightButtonDown"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="3" Grid.Column="3" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="4" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="5" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="7" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         <!--#region Above Slant-->
-        <StackPanel Grid.Row="1" Grid.Column="3" Background="#212121"/>
-        <StackPanel Grid.Row="1" Grid.Column="5" Background="#212121"/>
-        <StackPanel Grid.Row="1" Grid.Column="7" Background="#212121"/>
+        <StackPanel Grid.Row="1" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="1" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="1" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
         
-        <StackPanel Grid.Row="2" Grid.Column="4" Background="#212121"/>
-        <StackPanel Grid.Row="2" Grid.Column="6" Background="#212121"/>
-        <StackPanel Grid.Row="2" Grid.Column="8" Background="#212121"/>
+        <StackPanel Grid.Row="2" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="2" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="2" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
         
-        <StackPanel Grid.Row="3" Grid.Column="5" Background="#212121"/>
-        <StackPanel Grid.Row="3" Grid.Column="7" Background="#212121"/>
+        <StackPanel Grid.Row="3" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="3" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="6" Background="#212121"/>
-        <StackPanel Grid.Row="4" Grid.Column="8" Background="#212121"/>
+        <StackPanel Grid.Row="4" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="4" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="5" Grid.Column="7" Background="#212121"/>
-        <StackPanel Grid.Row="6" Grid.Column="8" Background="#212121"/>
+        <StackPanel Grid.Row="5" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         <!--#region Under Slant-->
-        <StackPanel Grid.Row="8" Grid.Column="2" Background="#212121"/>
-        <StackPanel Grid.Row="8" Grid.Column="4" Background="#212121"/>
-        <StackPanel Grid.Row="8" Grid.Column="6" Background="#212121"/>
+        <StackPanel Grid.Row="8" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="7" Grid.Column="1" Background="#212121"/>
-        <StackPanel Grid.Row="7" Grid.Column="3" Background="#212121"/>
-        <StackPanel Grid.Row="7" Grid.Column="5" Background="#212121"/>
+        <StackPanel Grid.Row="7" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="7" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="7" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="6" Grid.Column="4" Background="#212121"/>
-        <StackPanel Grid.Row="6" Grid.Column="2" Background="#212121"/>
+        <StackPanel Grid.Row="6" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="5" Grid.Column="1" Background="#212121"/>
-        <StackPanel Grid.Row="5" Grid.Column="3" Background="#212121"/>
+        <StackPanel Grid.Row="5" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="5" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="2" Background="#212121"/>
-        <StackPanel Grid.Row="3" Grid.Column="1" Background="#212121"/>
+        <StackPanel Grid.Row="4" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         <!--#endregion-->
         <!--#region Board Char Def-->
         <!--#region Column-->
-        <Label Grid.Column="1" Content="A" HorizontalAlignment="Center" 
+        <Label Grid.Column="1" Content="A" HorizontalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="2" Content="B" HorizontalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Column="2" Content="B" HorizontalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="3" Content="C" HorizontalAlignment="Center" 
+        <Label Grid.Column="3" Content="C" HorizontalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="4" Content="D" HorizontalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Column="4" Content="D" HorizontalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="5" Content="E" HorizontalAlignment="Center" 
+        <Label Grid.Column="5" Content="E" HorizontalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="6" Content="F" HorizontalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Column="6" Content="F" HorizontalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="7" Content="G" HorizontalAlignment="Center" 
+        <Label Grid.Column="7" Content="G" HorizontalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Column="8" Content="H" HorizontalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Column="8" Content="H" HorizontalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
         <!--#endregion-->
         <!--#region Row-->
-        <Label Grid.Row="1" Content="1" VerticalAlignment="Center" 
+        <Label Grid.Row="1" Content="8" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="2" Content="2" VerticalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Row="2" Content="7" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="3" Content="3" VerticalAlignment="Center" 
+        <Label Grid.Row="3" Content="6" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="4" Content="4" VerticalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Row="4" Content="5" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="5" Content="5" VerticalAlignment="Center" 
+        <Label Grid.Row="5" Content="4" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="6" Content="6" VerticalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Row="6" Content="3" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="7" Content="7" VerticalAlignment="Center" 
+        <Label Grid.Row="7" Content="2" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="8" Content="8" VerticalAlignment="Center" Foreground="#fafafa"
+        <Label Grid.Row="8" Content="1" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
         <!--#endregion-->
         <!--#endregion-->

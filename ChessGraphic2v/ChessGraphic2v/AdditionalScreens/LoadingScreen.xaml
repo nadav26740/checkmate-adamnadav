@@ -1,0 +1,75 @@
+﻿<Window x:Class="ChessGraphic2v.AdditionalScreens.LoadingScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChessGraphic2v.AdditionalScreens"
+        mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
+        Title="LoadingScreen" Height="350" Width="600" 
+        Background="Transparent" ShowInTaskbar="False" Topmost="True">
+    
+    <!--#region Window Start animaiton-->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation 
+                        Storyboard.TargetProperty="Opacity"
+                        Duration="0:0:1.5"
+                        From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <!--#endregion-->
+
+    <Border CornerRadius="15" ClipToBounds="True" Background="#1ABC9C">
+        <Grid Margin="15">
+            <!--#region Grid Definitions-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <!--#region Logo And name-->
+            <Border Grid.RowSpan="2" CornerRadius="15,0,0,15" Background="#16A085"/>
+            <Border Width="100" Height="100" CornerRadius="100" Grid.RowSpan="2"
+                    VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,60" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                <Border.Background>
+                    <ImageBrush ImageSource="/ResourcesPack/Chess Knight icon.png"/>
+                </Border.Background>
+            </Border>
+
+            <TextBlock Margin="0,150,0,0" VerticalAlignment="Top" Text="Chess UI" Grid.RowSpan="2"
+                       HorizontalAlignment="Center" FontSize="36" Foreground="#2C3E50" 
+                       FontFamily="Franklin Gothic Demi"/>
+            <TextBlock Margin="0,190,2,0" VerticalAlignment="Top" Text="For Magshimim By Nadav .m." Grid.RowSpan="2"
+                       HorizontalAlignment="Center" FontSize="10" Foreground="#7F34495E" 
+                       FontFamily="Franklin Gothic Demi"/>
+            <!--#endregion-->
+
+            <TextBlock Text="Waiting for Engine..." Grid.Column="1" 
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                       FontFamily="Franklin Gothic Demi Cond" FontSize="24"
+                       Foreground="#34495E" Margin="10,0" Width="0">
+                <TextBlock.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation 
+                                                 Storyboard.TargetProperty="Width"
+                                                 From="0" To="250" Duration="0:0:0.75"
+                                                 BeginTime="0:0:2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBlock.Triggers>
+            </TextBlock>
+        </Grid>
+    </Border>
+</Window>

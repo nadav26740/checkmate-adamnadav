@@ -55,7 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ToolsDefines.cs" />
+    <Compile Include="AdditionalScreens\LoadingScreen.xaml.cs">
+      <DependentUpon>LoadingScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UiEngine\Pipe.cs" />
+    <Compile Include="UiEngine\ToolsDefines.cs" />
+    <Page Include="AdditionalScreens\LoadingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Board.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,7 +79,7 @@
     <Compile Include="Board.xaml.cs">
       <DependentUpon>Board.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BoardHandler.cs" />
+    <Compile Include="UiEngine\BoardHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -117,6 +125,12 @@
     <Resource Include="ResourcesPack\r_black.png" />
     <Resource Include="ResourcesPack\r_white.png" />
     <Resource Include="ResourcesPack\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourcesPack\Chess Knight icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourcesPack\Exclamation mark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
