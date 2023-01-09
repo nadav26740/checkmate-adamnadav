@@ -21,12 +21,21 @@ namespace ChessGraphic2v
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AdditionalScreens.LoadingScreen LoaderScreen;
+
         public MainWindow()
         {
             InitializeComponent();
             Framer.Content = new Board();
-            new AdditionalScreens.LoadingScreen();
+            LoaderScreen = new AdditionalScreens.LoadingScreen();
+            Loaded += new RoutedEventHandler(showLoadingScreen);
             BoardHandler.MainWindowHandler = this;
+        }
+
+        private void showLoadingScreen(object sender, RoutedEventArgs e)
+        {
+            LoaderScreen.Owner = this;
+            LoaderScreen.Show();
         }
 
         private void Window_Closed(object sender, EventArgs e)

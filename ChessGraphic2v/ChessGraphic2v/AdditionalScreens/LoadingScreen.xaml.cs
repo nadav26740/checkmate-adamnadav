@@ -26,7 +26,7 @@ namespace ChessGraphic2v.AdditionalScreens
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BoardHandler.MainWindowHandler.ChangeNotification("Test", false);
+            BoardHandler.MainWindowHandler.ChangeNotification("Test", true);
         }
     }
 }

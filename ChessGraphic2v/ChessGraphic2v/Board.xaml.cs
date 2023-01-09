@@ -53,7 +53,9 @@ namespace ChessGraphic2v
             Grid.SetColumn(cp, i);
             Grid.SetRow(cp, j);
             GridBoard.Children.Add(cp);
-            MessageBox.Show(GridBoard.Children.IndexOf(cp).ToString());
+            BoardHandler.MainWindowHandler.ChangeNotification("New Tool Created Index: " +
+                GridBoard.Children.IndexOf(cp).ToString(), true);
+
             cpm = cp;
         }
 

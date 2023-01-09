@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGraphic2v.AdditionalScreens"
         mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None" 
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         Title="LoadingScreen" Height="350" Width="600" 
-        Background="Transparent" ShowInTaskbar="False" Topmost="True">
+        Background="Transparent" ShowInTaskbar="False" Topmost="True" ResizeMode="NoResize">
     
     <!--#region Window Start animaiton-->
     <Window.Triggers>
@@ -17,7 +17,11 @@
                     <DoubleAnimation 
                         Storyboard.TargetProperty="Opacity"
                         Duration="0:0:1.5"
-                        From="0" To="1"/>
+                        From="0" To="1">
+                        <DoubleAnimation.EasingFunction>
+                            <SineEase EasingMode="EaseIn"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
@@ -64,7 +68,11 @@
                                 <DoubleAnimation 
                                                  Storyboard.TargetProperty="Width"
                                                  From="0" To="250" Duration="0:0:0.75"
-                                                 BeginTime="0:0:2"/>
+                                                 BeginTime="0:0:2">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseIn" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>

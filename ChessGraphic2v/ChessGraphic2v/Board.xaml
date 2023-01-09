@@ -9,25 +9,46 @@
       Title="Board">
 
     <Page.Resources>
-        <SolidColorBrush x:Key="BlackSlotsColor" Color="#ECF0F1" /> 
-        <SolidColorBrush x:Key="WhiteSlotsColor" Color="#2C3E50" />
+        <SolidColorBrush x:Key="TestSlotsColor2" Color="#ECF0F1" />
+        <RadialGradientBrush x:Key="WhiteSlotsColor" >
+            <GradientStop Color="White"/>
+            <GradientStop Color="#FFD1D7D8" Offset="1.5"/>
+        </RadialGradientBrush>
+        
+        <SolidColorBrush x:Key="TestSlotsColor" Color="#2C3E50" /> 
+        <RadialGradientBrush x:Key="BlackSlotsColor" >
+            <GradientStop Color="#2C3E50"/>
+            <GradientStop Color="#FF273442" Offset="1.5"/>
+        </RadialGradientBrush>
     </Page.Resources>
-    
-    <Grid Background="{StaticResource WhiteSlotsColor}" x:Name="GridBoard">
+
+    <Grid x:Name="GridBoard" Background="{DynamicResource WhiteSlotsColor}">
         <!--#region Grid Definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
-            <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/>
-            <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/> <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
-            <RowDefinition/> <RowDefinition/>  <RowDefinition/> <RowDefinition/>
-            <RowDefinition/> <RowDefinition/>  <RowDefinition/> <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <!--#endregion-->     
+        <!--#endregion-->
         <!--#region Colors-->
-        
+
         <!--#region Chars Grid colors-->
         <StackPanel Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
@@ -39,7 +60,7 @@
         <StackPanel Grid.Row="6" Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Row="8" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
-        
+
         <!--#region Mid Slant-->
         <StackPanel Grid.Row="1" Grid.Column="1" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseRightButtonDown"/>
         <StackPanel Grid.Row="2" Grid.Column="2" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
@@ -54,11 +75,11 @@
         <StackPanel Grid.Row="1" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Row="1" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Row="1" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
-        
+
         <StackPanel Grid.Row="2" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Row="2" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Row="2" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
-        
+
         <StackPanel Grid.Row="3" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
         <StackPanel Grid.Row="3" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
 
