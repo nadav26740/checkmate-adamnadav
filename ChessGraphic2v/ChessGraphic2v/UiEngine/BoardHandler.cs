@@ -24,12 +24,41 @@ namespace ChessGraphic2v
         {
             boardhandle = null;
             ToolsPos = new Tools[8,8];
+            for (int i = 0; i < ToolsPos.GetLength(0); i++)
+            {
+                for (int j = 0; j < ToolsPos.GetLength(1); j++)
+                {
+                    ToolsPos[i, j] = null;
+                }
+            }
         }
 
         // setting the table by the string that has been sent by the engine1
         public static void SetNewTableByString(string str)
         {
+            int temp1 = 0, temp2 = 0;
+            for (int i = 0; i < str.Length; i++)
+            {
+                temp2 = i % 8;
+                temp1 = i / 8;
+                CreateNewTool(str[i], new Pose(temp1 + 1, temp2 + 1));
+            }
 
+            SetToolsPresenterInBoard();
+        }
+
+        // public for debuging 
+        // getting char and pose creating by that tool and putting
+        // it in the array of the tools that defining the board
+        public static void CreateNewTool(char c, Pose ps)
+        {
+            Tools tool = ConvertCharToTool(c);
+            ToolsPos[ps.y - 1, ps.x - 1] = tool;
+            if (tool == null)
+                return;
+
+            tool.pos = ps;
+            PutsPresenter(tool);
         }
 
         // converting the char into the type of tool
@@ -44,7 +73,7 @@ namespace ChessGraphic2v
             {
                 tool.Type = ToolsType.None;
                 tool.presenter = null;
-                return tool;
+                return null;
             }
             
             // converting it into lower case to make better
@@ -76,8 +105,12 @@ namespace ChessGraphic2v
             return tool;
         }
 
-        private static void PutPresenter(Tools tool)
+        private static void PutsPresenter(Tools tool)
         {
+            // checking if there is a tool there
+            if (tool == null)
+                return;
+
             char temp_c = 'x';
             string temp_str;
 
@@ -126,10 +159,27 @@ namespace ChessGraphic2v
 
         }
 
+        // public for debuging 
         // Setting the presenters on the UI board
-        private static void SetToolsPresenterInBoard()
+        public static void SetToolsPresenterInBoard()
         {
 
+            // running on all the tools
+            for (int i = 0; i < ToolsPos.GetLength(0); i++)
+            {
+                for (int j = 0; j < ToolsPos.GetLength(1); j++)
+                {
+                    if (ToolsPos[i, j] != null)
+                    {
+                        // setting the tool presenter location in grid
+                        Grid.SetColumn  (ToolsPos[i, j].presenter, ToolsPos[i, j].pos.y);
+                        Grid.SetRow     (ToolsPos[i, j].presenter, ToolsPos[i, j].pos.x);
+
+                        // setting the tool it self in the grid
+                        boardhandle.GridBoard.Children.Add(ToolsPos[i, j].presenter);
+                    }
+                }
+            }
         }
 
         // new pose (new tool) is the tool that being eaten

@@ -20,7 +20,7 @@
             <ThicknessAnimation Storyboard.TargetName="NotificationBorder"
                                 Storyboard.TargetProperty="Margin" 
                                                 Duration="0:0:0.5"
-                                To="0,0,40,-10">
+                                To="0,0,40,15">
                 <ThicknessAnimation.EasingFunction>
                     <SineEase EasingMode="EaseOut"/>
                 </ThicknessAnimation.EasingFunction>
@@ -49,10 +49,11 @@
                BorderThickness="6" />
         
         <!--#region Notification Border-->
-        <Border Grid.Column="2" Grid.Row="2" Background="#34465D" CornerRadius="25,25,0,0" Width="420" 
+        <Border Grid.Column="2" Grid.Row="2" Background="#34465D" CornerRadius="25" Width="420" 
                 HorizontalAlignment="Right" Margin="0,0,40,-200" Height="180" VerticalAlignment="Bottom" ClipToBounds="True"
                 BorderBrush="#2C3E50" BorderThickness="8" Opacity="0.85"
                 x:Name="NotificationBorder">
+
 
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>

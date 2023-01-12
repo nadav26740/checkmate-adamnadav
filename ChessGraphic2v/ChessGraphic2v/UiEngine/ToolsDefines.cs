@@ -12,6 +12,11 @@ namespace ChessGraphic2v
     public struct Pose
     {
         public int x, y;
+        public Pose(int X, int Y)
+        {
+            this.x = X;
+            this.y = Y;
+        }
     }
 
     public class Tools
@@ -21,6 +26,7 @@ namespace ChessGraphic2v
         public BitmapImage image;
         public bool isBlack;
         public ContentPresenter presenter;
+        public Pose pos;
 
         public Tools() 
         {

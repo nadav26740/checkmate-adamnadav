@@ -36,6 +36,9 @@ namespace ChessGraphic2v
         {
             LoaderScreen.Owner = this;
             LoaderScreen.Show();
+            BoardHandler.ResetBoard();
+            BoardHandler.boardhandle = (Board)Framer.Content;
+            BoardHandler.SetNewTableByString("pppppppp################PPPPPpPPPP");
         }
 
         private void Window_Closed(object sender, EventArgs e)
