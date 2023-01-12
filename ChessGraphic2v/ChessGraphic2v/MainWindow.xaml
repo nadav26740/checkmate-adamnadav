@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGraphic2v"
         mc:Ignorable="d" Closed="Window_Closed"
-        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="Manual" 
-        Icon="/ResourcesPack/Chess Knight icon.png">
+        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen" 
+        Icon="/ResourcesPack/Chess Knight icon.png" 
+        IsEnabled="False" IsEnabledChanged="GameStarted">
     <Window.Background>
         <LinearGradientBrush EndPoint="-0.4,-0.2" StartPoint="1.2,1.2">
             <GradientStop Color="#16A085"/>

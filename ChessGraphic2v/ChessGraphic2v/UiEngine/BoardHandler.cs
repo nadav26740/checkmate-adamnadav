@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ChessGraphic2v.UiEngine;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,8 @@ namespace ChessGraphic2v
         public static Board boardhandle;
         public static Tools[,] ToolsPos;
         public static MainWindow MainWindowHandler;
+        public static UiEngine.EngineLinker Elinker;
+        public static AdditionalScreens.LoadingScreen LoaderScreen;
 
 
         // reseting the Tools Array
@@ -37,7 +41,7 @@ namespace ChessGraphic2v
         public static void SetNewTableByString(string str)
         {
             int temp1 = 0, temp2 = 0;
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < str.Length - 1; i++)
             {
                 temp2 = i % 8;
                 temp1 = i / 8;
@@ -53,6 +57,9 @@ namespace ChessGraphic2v
         public static void CreateNewTool(char c, Pose ps)
         {
             Tools tool = ConvertCharToTool(c);
+            Debug.WriteLine(c + " => " + (ps.y - 1).ToString() + ", " + (ps.x - 1).ToString() + " => " +
+                 ToolsPos.GetLength(0).ToString() + ", " + ToolsPos.GetLength(1).ToString());
+
             ToolsPos[ps.y - 1, ps.x - 1] = tool;
             if (tool == null)
                 return;
@@ -180,7 +187,7 @@ namespace ChessGraphic2v
                     }
                 }
             }
-        }
+        }   
 
         // new pose (new tool) is the tool that being eaten
         // old pose (old tool) is the tool that doing the move
@@ -210,7 +217,7 @@ namespace ChessGraphic2v
             }
         }
 
-        private  static void ChangeToolType(Pose current, ToolsType type)
+        private static void ChangeToolType(Pose current, ToolsType type)
         {
 
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGraphic2v.AdditionalScreens"
         mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None" 
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterOwner" 
         Title="LoadingScreen" Height="350" Width="600" 
         Background="Transparent" ShowInTaskbar="False" Topmost="True" ResizeMode="NoResize">
     
@@ -28,7 +28,9 @@
     </Window.Triggers>
     <!--#endregion-->
 
-    <Border CornerRadius="15" ClipToBounds="True" Background="#1ABC9C">
+    <Border CornerRadius="15" ClipToBounds="True" x:Name="MainBoarder"
+            Background="#1ABC9C" Height="350" VerticalAlignment="Bottom">
+
         <Grid Margin="15">
             <!--#region Grid Definitions-->
             <Grid.ColumnDefinitions>
@@ -57,7 +59,7 @@
                        FontFamily="Franklin Gothic Demi"/>
             <!--#endregion-->
 
-            <TextBlock Text="Waiting for Engine..." Grid.Column="1" 
+            <TextBlock Text="Waiting for Engine..." Grid.Column="1" x:Name="MainText"
                        HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                        FontFamily="Franklin Gothic Demi Cond" FontSize="24"
                        Foreground="#34495E" Margin="10,0" Width="0">

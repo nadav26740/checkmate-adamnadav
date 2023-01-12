@@ -21,24 +21,26 @@ namespace ChessGraphic2v
     /// </summary>
     public partial class MainWindow : Window
     {
-        private AdditionalScreens.LoadingScreen LoaderScreen;
 
         public MainWindow()
         {
             InitializeComponent();
             Framer.Content = new Board();
-            LoaderScreen = new AdditionalScreens.LoadingScreen();
+            BoardHandler.LoaderScreen = new AdditionalScreens.LoadingScreen();
             Loaded += new RoutedEventHandler(showLoadingScreen);
             BoardHandler.MainWindowHandler = this;
         }
 
         private void showLoadingScreen(object sender, RoutedEventArgs e)
         {
-            LoaderScreen.Owner = this;
-            LoaderScreen.Show();
+            // showing the loading screen in the middle of the main window
+            BoardHandler.LoaderScreen.Owner = this;
+            BoardHandler.LoaderScreen.Show();
+
+            // reseting the board
             BoardHandler.ResetBoard();
             BoardHandler.boardhandle = (Board)Framer.Content;
-            BoardHandler.SetNewTableByString("pppppppp################PPPPPpPPPP");
+            BoardHandler.Elinker = new UiEngine.EngineLinker();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -71,6 +73,17 @@ namespace ChessGraphic2v
             // starting animation
             Storyboard sb = (Storyboard)FindResource("NotificationBorderStoryBoard");
             NotificationBorder.BeginStoryboard(sb);
+            
         }
+
+        private void GameStarted(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(this.IsEnabled)
+            {
+                ChangeNotification("Game Started!", true);
+                BoardHandler.SetNewTableByString(BoardHandler.Elinker.pipes.getEngineMessage());
+            }
+        }
+
     }
 }

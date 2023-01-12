@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ChessGraphic2v
 {
@@ -24,7 +25,6 @@ namespace ChessGraphic2v
 
         public bool connect()
         {
-
             // Wait for a client to connect
             pipeServer.WaitForConnection();
 
