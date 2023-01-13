@@ -26,10 +26,32 @@ namespace ChessGraphic2v
         public bool connect()
         {
             // Wait for a client to connect
-            pipeServer.WaitForConnection();
-
+            pipeServer.WaitForConnection(); 
             return pipeServer.IsConnected;
         }
+
+        // to stop the pipe server if still waiting for connections
+        public void Dispose()
+        {
+            if (pipeServer.IsConnected)
+            {
+                return;
+            }
+            try
+            {
+                NamedPipeClientStream clt = new NamedPipeClientStream("chessPipe");
+                clt.Connect();
+                clt.Close();
+
+                pipeServer.Close();
+                pipeServer.Dispose();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
 
         public bool isConnected()
         {

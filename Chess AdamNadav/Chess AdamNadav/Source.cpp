@@ -93,7 +93,8 @@ void main()
 		catch (ChessEvents& e) // error found or checkmate
 		{
 			msgToGraphics[0] = (char)(e.getDetails().eventType + '0');  // creating the msg 
-			cout << e.getDetails().explain << endl;
+			cout << "Error: " << e.getDetails().explain << endl;
+			return;
 		}
 
 		msgToGraphics[1] = 0;

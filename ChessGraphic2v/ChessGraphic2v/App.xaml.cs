@@ -13,5 +13,10 @@ namespace ChessGraphic2v
     /// </summary>
     public partial class App : Application
     {
+
+        public App()
+        {
+            ShutdownMode = ShutdownMode.OnLastWindowClose;
+        }
     }
 }

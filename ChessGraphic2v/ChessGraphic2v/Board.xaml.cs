@@ -31,45 +31,36 @@ namespace ChessGraphic2v
             
         }
 
-        private void StackPanel_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            StackPanel sened = sender as StackPanel;
-            int i = Grid.GetColumn(sened);
-            int j = Grid.GetRow(sened);
-
-            ContentPresenter cp = new ContentPresenter();
-            Image cc = new Image();
-            cp.IsHitTestVisible = false;
-            cc.HorizontalAlignment = HorizontalAlignment.Center;
-            cc.VerticalAlignment = VerticalAlignment.Center;
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(@"pack://application:,,,/ResourcesPack/p_black.png", UriKind.Absolute);
-            image.EndInit();
-            cc.Margin = new Thickness(10);
-            cc.Source = image;
-
-            cp.Content = cc;
-            Grid.SetColumn(cp, i);
-            Grid.SetRow(cp, j);
-            GridBoard.Children.Add(cp);
-            BoardHandler.MainWindowHandler.ChangeNotification("New Tool Created Index: " +
-                GridBoard.Children.IndexOf(cp).ToString(), true);
-
-            cpm = cp;
-        }
-
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            StackPanel sened = sender as StackPanel;
-            int i = Grid.GetColumn(sened);
-            int j = Grid.GetRow(sened);
-            GridBoard.Children.Remove(cpm);
-
-            Grid.SetColumn(cpm, i);
-            Grid.SetRow(cpm, j);
-            GridBoard.Children.Add(cpm);
-            
+            BoardHandler.MainWindowHandler.ChangeNotification("Ani Moteek " + sender.ToString());
         }
     }
 }
+
+
+
+//StackPanel sened = sender as StackPanel;
+//int i = Grid.GetColumn(sened);
+//int j = Grid.GetRow(sened);
+
+//ContentPresenter cp = new ContentPresenter();
+//Image cc = new Image();
+//cp.IsHitTestVisible = false;
+//cc.HorizontalAlignment = HorizontalAlignment.Center;
+//cc.VerticalAlignment = VerticalAlignment.Center;
+//BitmapImage image = new BitmapImage();
+//image.BeginInit();
+//image.UriSource = new Uri(@"pack://application:,,,/ResourcesPack/p_black.png", UriKind.Absolute);
+//image.EndInit();
+//cc.Margin = new Thickness(10);
+//cc.Source = image;
+
+//cp.Content = cc;
+//Grid.SetColumn(cp, i);
+//Grid.SetRow(cp, j);
+//GridBoard.Children.Add(cp);
+//BoardHandler.MainWindowHandler.ChangeNotification("New Tool Created Index: " +
+//    GridBoard.Children.IndexOf(cp).ToString(), true);
+
+//cpm = cp;

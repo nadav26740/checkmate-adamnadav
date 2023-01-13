@@ -41,15 +41,22 @@ namespace ChessGraphic2v
             BoardHandler.ResetBoard();
             BoardHandler.boardhandle = (Board)Framer.Content;
             BoardHandler.Elinker = new UiEngine.EngineLinker();
+
+            Application.Current.MainWindow = this;
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            if (BoardHandler.LoaderScreen != null)
+                BoardHandler.LoaderScreen.Close();
+            
+            BoardHandler.Elinker.Dispose();
             App.Current.Shutdown();
+
         }
 
         // Showing Notification Image
-        public void ChangeNotification(string newMessage, bool CriticalMessage)
+        public void ChangeNotification(string newMessage, bool CriticalMessage = true)
         {
             NotificationMessage.Text = newMessage;
             

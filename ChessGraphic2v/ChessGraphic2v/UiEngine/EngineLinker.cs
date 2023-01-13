@@ -13,13 +13,20 @@ namespace ChessGraphic2v.UiEngine
     public class EngineLinker
     {
         public pipe pipes;
+        public Thread Thread_thread;
 
         public EngineLinker() 
         {
             pipes = new pipe();
-            new Thread(this.WaitforConnection).Start();
+            Thread_thread = new Thread(this.WaitforConnection);
+            Thread_thread.Start();
 
             Console.WriteLine("Teestttt");
+        }
+
+        ~EngineLinker() 
+        {
+            Thread_thread.Abort();  
         }
 
         private void WaitforConnection()
@@ -30,7 +37,7 @@ namespace ChessGraphic2v.UiEngine
 
                 BoardHandler.LoaderScreen.Dispatcher.Invoke(() =>
                 {
-                    BoardHandler.LoaderScreen.Hide();
+                    BoardHandler.LoaderScreen.Close();
                     BoardHandler.LoaderScreen = null;
                 });
 
@@ -38,8 +45,6 @@ namespace ChessGraphic2v.UiEngine
                 {
                     BoardHandler.MainWindowHandler.IsEnabled = true;
                 });
-                
-                
                 return;
             }
 
@@ -53,6 +58,11 @@ namespace ChessGraphic2v.UiEngine
             App.Current.Shutdown();
         }
 
+        // for making sure the thread getting closed too!
+        public void Dispose()
+        {
+            pipes.Dispose();
+        }
         
     }
 }
