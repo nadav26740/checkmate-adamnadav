@@ -37,7 +37,9 @@ namespace ChessGraphic2v.UiEngine
 
                 BoardHandler.LoaderScreen.Dispatcher.Invoke(() =>
                 {
-                    BoardHandler.LoaderScreen.Close();
+                    BoardHandler.LoaderScreen.MainText.Text = "Engine Connected!!!";
+
+                    BoardHandler.LoaderScreen.Window_FadeOut();
                     BoardHandler.LoaderScreen = null;
                 });
 
@@ -52,7 +54,7 @@ namespace ChessGraphic2v.UiEngine
             {
                 BoardHandler.LoaderScreen.MainText.Text = "Error: Failed To Connect the Engine";
 
-                BoardHandler.LoaderScreen.MainText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(""));
+                BoardHandler.LoaderScreen.MainText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFBD081C"));
             });
             Task.Delay(5000).Wait();
             App.Current.Shutdown();

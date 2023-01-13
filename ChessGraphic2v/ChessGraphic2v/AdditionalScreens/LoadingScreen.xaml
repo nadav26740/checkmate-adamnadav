@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGraphic2v.AdditionalScreens"
         mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None" 
-        WindowStartupLocation="CenterOwner" 
+        WindowStartupLocation="CenterOwner"
         Title="LoadingScreen" Height="350" Width="600" 
         Background="Transparent" ShowInTaskbar="False" Topmost="True" ResizeMode="NoResize">
     
     <!--#region Window Start animaiton-->
+    <Window.Resources>
+        <Storyboard x:Key="FadeOut" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                Duration="0:0:0.75" To="0" >
+                <DoubleAnimation.EasingFunction>
+                    <QuinticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+    
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>

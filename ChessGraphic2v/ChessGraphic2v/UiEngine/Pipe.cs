@@ -100,17 +100,6 @@ namespace ChessGraphic2v
 
         public string getStringFromEngine()
         {
-            // protocol:
-            // 0 - valid move
-            // 1 - valid move (you made chess)
-            // 2 - invalid move (not your player)
-            // 3 - invalid move (destination is not free)
-            // 4 - invalid move (chess will occur)
-            // 5 - invalid move (out of bounds)
-            // 6 - invalid move (illegal movement with piece)
-            // 7 - Invalid move - source and dest are equal
-            // 8 - check mate
-
             byte[] inBuffer = new byte[1024];
             ioStream.Read(inBuffer, 0, 1024);
 

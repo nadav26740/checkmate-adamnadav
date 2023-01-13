@@ -9,17 +9,30 @@
       Title="Board">
 
     <Page.Resources>
-        <SolidColorBrush x:Key="TestSlotsColor2" Color="#ECF0F1" />
-        <RadialGradientBrush x:Key="WhiteSlotsColor" >
-            <GradientStop Color="White"/>
-            <GradientStop Color="#FFD1D7D8" Offset="1.5"/>
+        
+        <!--#region White Colors slots Define-->
+        <RadialGradientBrush x:Key="WhiteSlotChosed">
+            <GradientStop Color="#FF00FF9C"/>
+            <GradientStop Color="#FFD1D7D8" Offset="1.2"/>
         </RadialGradientBrush>
         
-        <SolidColorBrush x:Key="TestSlotsColor" Color="#2C3E50" /> 
+        <RadialGradientBrush x:Key="WhiteSlotsColor" >
+            <GradientStop Color="White"/>
+            <GradientStop Color="#FFD1D7D8" Offset="1.8"/>
+        </RadialGradientBrush>
+        <!--#endregion-->
+        
+        <!--#region BlackSlots Colors Define-->
+        <RadialGradientBrush x:Key="BlackSlotChosed">
+            <GradientStop Color="#FF84FFCF"/>
+            <GradientStop Color="#FF273442" Offset="1.8"/>
+        </RadialGradientBrush>
+        
         <RadialGradientBrush x:Key="BlackSlotsColor" >
             <GradientStop Color="#2C3E50"/>
             <GradientStop Color="#FF273442" Offset="1.5"/>
         </RadialGradientBrush>
+        <!--#endregion-->
     </Page.Resources>
 
     <Grid x:Name="GridBoard" Background="{DynamicResource WhiteSlotsColor}">
@@ -62,50 +75,50 @@
         <!--#endregion-->
 
         <!--#region Mid Slant-->
-        <StackPanel Grid.Row="1" Grid.Column="1" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="2" Grid.Column="2" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="3" Grid.Column="3" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="4" Grid.Column="4" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="5" Grid.Column="5" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="6" Grid.Column="6" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="7" Grid.Column="7" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="8" Grid.Column="8" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="3" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="4" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="5" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="7" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         <!--#region Above Slant-->
-        <StackPanel Grid.Row="1" Grid.Column="3" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="1" Grid.Column="5" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="1" Grid.Column="7" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="1" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="1" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="1" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="2" Grid.Column="4" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="2" Grid.Column="6" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="2" Grid.Column="8" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="2" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="2" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="2" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="3" Grid.Column="5" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="3" Grid.Column="7" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="3" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="3" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="6" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="4" Grid.Column="8" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="4" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="4" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="5" Grid.Column="7" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="6" Grid.Column="8" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="5" Grid.Column="7" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Grid.Column="8" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         <!--#region Under Slant-->
-        <StackPanel Grid.Row="8" Grid.Column="2" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="8" Grid.Column="4" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="8" Grid.Column="6" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="8" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="8" Grid.Column="6" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="7" Grid.Column="1" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="7" Grid.Column="3" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="7" Grid.Column="5" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="7" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="7" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="7" Grid.Column="5" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="6" Grid.Column="4" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="6" Grid.Column="2" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="6" Grid.Column="4" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="6" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="5" Grid.Column="1" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="5" Grid.Column="3" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="5" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="5" Grid.Column="3" Background="{StaticResource BlackSlotsColor}"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="2" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
-        <StackPanel Grid.Row="3" Grid.Column="1" Background="{StaticResource BlackSlotsColor}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"/>
+        <StackPanel Grid.Row="4" Grid.Column="2" Background="{StaticResource BlackSlotsColor}"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Background="{StaticResource BlackSlotsColor}"/>
         <!--#endregion-->
         <!--#region Board Char Def-->
         <!--#region Column-->

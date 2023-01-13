@@ -17,6 +17,34 @@ namespace ChessGraphic2v
             this.x = X;
             this.y = Y;
         }
+
+        public override string ToString()
+        {
+            return x.ToString() + (char)(y  + 'a' - 1);
+        }
+    }
+
+    // protocol:
+    // 0 - valid move
+    // 1 - valid move (you made chess)
+    // 2 - invalid move (not your player)
+    // 3 - invalid move (destination is not free)
+    // 4 - invalid move (chess will occur)
+    // 5 - invalid move (out of bounds)
+    // 6 - invalid move (illegal movement with piece)
+    // 7 - Invalid move - source and dest are equal
+    // 8 - check mate
+    enum AnswersProtocol : byte
+    {
+        ValidMove,
+        ValidMoveChess,
+        InvalidMoveSelfSuicied,
+        InvalidMoveDestIsntFree,
+        InvalidMoveChessOccur,
+        InvalidMoveOutOfIndex,
+        InvalidMoveIliegalMove,
+        InvalidMoveDontmoving,
+        EndGame
     }
 
     public class Tools

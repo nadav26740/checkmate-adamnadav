@@ -17,6 +17,46 @@
 
     <!--#region Storyboards-->
     <Window.Resources>
+        <!--#region border Notification colors-->
+        <Color x:Key="NonCriticalGradientStop1">#25D366</Color>
+        <Color x:Key="NonCriticalGradientStop2">#00AFF0</Color>
+        
+        <Color x:Key="CriticalGradientStop1">#FF3300</Color>
+        <Color x:Key="CriticalGradientStop2">#FF0084</Color>
+
+        <Storyboard x:Key="NotificationBorderAnimation">
+            
+            <DoubleAnimation Storyboard.TargetName="GradientStop1"
+                             Storyboard.TargetProperty="Offset"
+                Duration="0:0:4" From="0" To="1.2"/>
+            
+            <DoubleAnimation Storyboard.TargetName="GradientStop2"
+                             Storyboard.TargetProperty="Offset"
+                             Duration="0:0:4"
+                             From="0" To="-0.4"/>
+            
+            <PointAnimation Storyboard.TargetName="LinearBorderBrush"
+                            Storyboard.TargetProperty="StartPoint"
+                            Duration="0:0:3"
+                            From="1.2, 0" To="0, 0"/>
+            <PointAnimation Storyboard.TargetName="LinearBorderBrush"
+                            Storyboard.TargetProperty="StartPoint"
+                            BeginTime="0:0:3"
+                            Duration="0:0:3"
+                            To="0, 1.7"/>
+            
+            <PointAnimation Storyboard.TargetName="LinearBorderBrush"
+                            Storyboard.TargetProperty="EndPoint"
+                            Duration="0:0:3"
+                            From="0, 1.7" To="1.2, 1.7"/>
+            <PointAnimation Storyboard.TargetName="LinearBorderBrush"
+                            Storyboard.TargetProperty="EndPoint"
+                            BeginTime="0:0:3"
+                            Duration="0:0:3"
+                            To="1.2, 0"/>
+        </Storyboard>
+        <!--#endregion-->
+
         <Storyboard x:Key="NotificationBorderStoryBoard" >
             <ThicknessAnimation Storyboard.TargetName="NotificationBorder"
                                 Storyboard.TargetProperty="Margin" 
@@ -36,43 +76,68 @@
             </ThicknessAnimation>
 
         </Storyboard>
+
+        <!--#region Tint Animations!-->
+        <Storyboard x:Key="TintBoarderDisapear">
+            <DoubleAnimation Storyboard.TargetName="Tint"
+                             Storyboard.TargetProperty="Opacity" 
+                             Duration="0:0:0.75" To="0"/>
+        </Storyboard>
+        <Storyboard x:Key="TintBoarderShowing">
+            <DoubleAnimation Storyboard.TargetName="Tint"
+                             Storyboard.TargetProperty="Opacity" 
+                             Duration="0:0:0.75" To="0.75"/>
+        </Storyboard>
+        <!--#endregion-->
     </Window.Resources>
     <!--#endregion-->
-    
-    <Grid ClipToBounds="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="850"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Border Background="Black" Opacity="0.15" Margin="5" BorderThickness="2" BorderBrush="Black"/>
-        <Frame x:Name="Framer" Width="825" Height="825" 
-               BorderBrush="#2C3E50"
-               BorderThickness="6" />
-        
-        <!--#region Notification Border-->
-        <Border Grid.Column="2" Grid.Row="2" Background="#34465D" CornerRadius="25" Width="420" 
-                HorizontalAlignment="Right" Margin="0,0,40,-200" Height="180" VerticalAlignment="Bottom" ClipToBounds="True"
-                BorderBrush="#2C3E50" BorderThickness="8" Opacity="0.85"
-                x:Name="NotificationBorder">
+
+    <Grid>
+        <Grid ClipToBounds="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="850"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Background="Black" Opacity="0.15" Margin="5" BorderThickness="2" BorderBrush="Black"/>
+            <Frame x:Name="Framer" Width="825" Height="825" 
+                   BorderBrush="#2C3E50"
+                   BorderThickness="6" />
+
+            <!--#region Notification Border-->
+            <Border Grid.Column="2" Grid.Row="2" Background="#FF34515D" CornerRadius="25" Width="420" 
+                    HorizontalAlignment="Right" Margin="0,0,40,-200" Height="180" 
+                    VerticalAlignment="Bottom" ClipToBounds="True" BorderThickness="8" Opacity="1"
+                    x:Name="NotificationBorder">
+                <Border.BorderBrush>
+                    <LinearGradientBrush x:Name="LinearBorderBrush" EndPoint="0,1.7" StartPoint="1.2, 0">
+                        <GradientStop x:Name="GradientStop1" Color="{DynamicResource CriticalGradientStop1}"/>
+                        <GradientStop x:Name="GradientStop2" Color="{DynamicResource CriticalGradientStop2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
 
 
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="7*"/>
-                </Grid.ColumnDefinitions>
-                <Border x:Name="NotificationIcon" Margin="20" CornerRadius="140" Width="100" Height="100" 
-                        BorderThickness="3" BorderBrush="#E74C3C" >
-                    <Border.Background>
-                        <ImageBrush ImageSource="/ResourcesPack/Exclamation mark.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" TileMode="FlipX"/>
-                    </Border.Background>
-                </Border>
-                <TextBlock Grid.Column="2" VerticalAlignment="Center" Margin="10,0" x:Name="NotificationMessage"
-                           Text="Notification " FontSize="28" TextWrapping="Wrap" FontWeight="Bold"
-                           FontFamily="Franklin Gothic Demi" Foreground="#ECF0F1">
-                </TextBlock>
-            </Grid>
-        </Border>
-        <!--#endregion-->
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border x:Name="NotificationIcon" Margin="20" CornerRadius="140" Width="100" Height="100" 
+                            BorderThickness="3" BorderBrush="#E74C3C" >
+                        <Border.Background>
+                            <ImageBrush ImageSource="/ResourcesPack/exclamation-mark-2.png" Stretch="Uniform" 
+                                        RenderOptions.BitmapScalingMode="Fant" TileMode="FlipX"/>
+                        </Border.Background>
+                    </Border>
+                    <TextBlock Grid.Column="2" VerticalAlignment="Center" Margin="10,0" x:Name="NotificationMessage"
+                               Text="Notification " FontSize="28" TextWrapping="Wrap" FontWeight="Bold"
+                               FontFamily="Franklin Gothic Demi" Foreground="#ECF0F1">
+                    </TextBlock>
+                </Grid>
+            </Border>
+            <!--#endregion-->
+        </Grid>
+
+        <Border x:Name="Tint" Opacity="0.7" Background="#FF1F1F1F" IsHitTestVisible="False"/>
     </Grid>
-</Window>
+</Window>  

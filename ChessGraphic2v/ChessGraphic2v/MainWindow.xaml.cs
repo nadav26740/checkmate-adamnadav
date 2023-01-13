@@ -64,7 +64,7 @@ namespace ChessGraphic2v
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri((CriticalMessage ?
-                @"pack://application:,,,/ResourcesPack/x.png" : @"pack://application:,,,/ResourcesPack/Exclamation mark.png"), UriKind.Absolute);
+                @"pack://application:,,,/ResourcesPack/x.png" : @"pack://application:,,,/ResourcesPack/exclamation-mark-2.png"), UriKind.Absolute);
             image.EndInit();
 
             // rendering the notification image
@@ -76,9 +76,18 @@ namespace ChessGraphic2v
             NotificationIcon.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(CriticalMessage ?
                 "#E74C3C" : "#ECF0F1"));
 
+            // change colors of the gardiant in the border
+            ((GradientStop)FindName("GradientStop2")).Color = ((Color)FindResource
+                (CriticalMessage ? "CriticalGradientStop2" : "NonCriticalGradientStop2"));
+            ((GradientStop)FindName("GradientStop1")).Color = ((Color)FindResource
+                (CriticalMessage ? "CriticalGradientStop1" : "NonCriticalGradientStop1"));
+
+            // story board
+            Storyboard sb = (Storyboard)FindResource("NotificationBorderAnimation");
+            NotificationBorder.BeginStoryboard(sb);
 
             // starting animation
-            Storyboard sb = (Storyboard)FindResource("NotificationBorderStoryBoard");
+            sb = (Storyboard)FindResource("NotificationBorderStoryBoard");
             NotificationBorder.BeginStoryboard(sb);
             
         }
@@ -89,6 +98,8 @@ namespace ChessGraphic2v
             {
                 ChangeNotification("Game Started!", true);
                 BoardHandler.SetNewTableByString(BoardHandler.Elinker.pipes.getEngineMessage());
+                Storyboard sb = (Storyboard)FindResource("TintBoarderDisapear");
+                Tint.BeginStoryboard(sb);
             }
         }
 

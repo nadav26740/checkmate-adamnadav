@@ -16,24 +16,121 @@ using System.Windows.Shapes;
 
 namespace ChessGraphic2v
 {
+    enum BoardStatus
+    {
+        None,
+        FirstChoose
+    }
+
     /// <summary>
     /// Interaction logic for Board.xaml
     /// </summary>
     public partial class Board : Page
     {
-        private ContentPresenter cpm;
+        private Pose FirstPose;
+        private StackPanel FirstPanel;
+        private Pose LastPose;
+        private StackPanel LastPanel;
+
+        private BoardStatus Status;
 
         public Grid getGridBoard() { return GridBoard; }
 
         public Board()
         {
             InitializeComponent();
-            
+            Loaded += LoadFunctionsIntoPanels;
+            Status = BoardStatus.None;
+            FirstPose = new Pose();
+            LastPose = new Pose();
         }
 
+        // loading the panels and the functions into the panels
+        private void LoadFunctionsIntoPanels(object sender, RoutedEventArgs e)
+        {
+            StackPanel sp;
+
+            // loading the white panels
+            for (int i = 1; i <= 8; i++)
+            {
+                for (int j = 1; j <= 8; j++)
+                {
+                    if((i + j) % 2 == 1)
+                    {
+                        sp = new StackPanel();
+                        sp.Background = (RadialGradientBrush)FindResource("WhiteSlotsColor");
+                        Grid.SetColumn(sp, i);
+                        Grid.SetRow(sp, j);
+
+                        GridBoard.Children.Add(sp);
+                    }
+                }
+                
+            }
+
+            // loading functions into the panels
+            foreach (UIElement uI in GridBoard.Children)
+            {
+                if (Grid.GetRow(uI) > 0 && Grid.GetColumn(uI) > 0)
+                {
+                    sp = uI as StackPanel;
+                    sp.MouseLeftButtonDown += StackPanel_MouseLeftButtonDown;
+                }
+            }
+        }
+
+        // The panels function
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BoardHandler.MainWindowHandler.ChangeNotification("Ani Moteek " + sender.ToString());
+            StackPanel panel = sender as StackPanel;
+            
+
+            // Highlighting the choosen slots
+            if ((Grid.GetRow(panel) + Grid.GetColumn(panel)) % 2 == 1)
+                panel.Background = (RadialGradientBrush)FindResource("WhiteSlotChosed");
+            else
+                panel.Background = (RadialGradientBrush)FindResource("BlackSlotChosed");
+
+            // to highlight the chossen Slots and Run the command if needed
+            if(Status == BoardStatus.None)
+            {
+                FirstPose.x = Grid.GetColumn(panel);
+                FirstPose.y = Grid.GetRow(panel);
+                BoardHandler.MainWindowHandler.ChangeNotification("Panel: [" + Grid.GetRow(panel) + ", "
+                + (char)(Grid.GetColumn(panel) + 'a' - 1) + "] Has Been Pressed", false);
+
+                // removing old panels that has chossen highlights
+                if (FirstPanel!= null)
+                {
+                    if ((Grid.GetRow(FirstPanel) + Grid.GetColumn(FirstPanel)) % 2 == 1)
+                        FirstPanel.Background = (RadialGradientBrush)FindResource("WhiteSlotsColor");
+                    else
+                        FirstPanel.Background = (RadialGradientBrush)FindResource("BlackSlotsColor");
+
+                    if ((Grid.GetRow(LastPanel) + Grid.GetColumn(LastPanel)) % 2 == 1)
+                        LastPanel.Background = (RadialGradientBrush)FindResource("WhiteSlotsColor");
+                    else
+                        LastPanel.Background = (RadialGradientBrush)FindResource("BlackSlotsColor");
+                }
+
+
+                // setting the first panel
+                FirstPanel = panel; 
+                Status = BoardStatus.FirstChoose;
+            }
+            else
+            {
+                LastPose.x = Grid.GetColumn(panel);
+                LastPose.y = Grid.GetRow(panel);
+                BoardHandler.MainWindowHandler.ChangeNotification("Moving: " + FirstPose + " To " + LastPose, false);
+                LastPanel = panel;
+                // todo: sending The Command to the server
+
+
+
+                // changing the status back to normal
+                Status = BoardStatus.None;
+            }
         }
     }
 }

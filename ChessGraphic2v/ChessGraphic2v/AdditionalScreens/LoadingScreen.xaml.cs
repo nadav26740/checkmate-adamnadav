@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -27,6 +28,15 @@ namespace ChessGraphic2v.AdditionalScreens
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             BoardHandler.MainWindowHandler.ChangeNotification("Test", true);
+        }
+
+        public void Window_FadeOut()
+        {
+            Storyboard sb = (Storyboard)FindResource("FadeOut");
+            this.BeginStoryboard(sb);
+
+            Task.Delay(TimeSpan.FromSeconds(0.75));
+            this.Close();
         }
     }
 }

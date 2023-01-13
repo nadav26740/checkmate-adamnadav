@@ -78,7 +78,7 @@ void main()
 			{
 				throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "There is no piece in the location");
 			}
-
+			
 			else if (tempPiece->getWhite() != whitePlaying) // check the piece belone to the currect player
 			{
 				throw ChessEvents(INVALIED_PIECE_NOT_ALLOWED, "You Doesn't own the piece");
@@ -88,14 +88,15 @@ void main()
 			msgToGraphics[0] = (char)(tempPiece->getDetails().eventType + '0');
 			cout << tempPiece->getDetails().explain << endl;
 			GameFunctions::switchPlayer(whitePlaying); // switching player
-		}
 
+			
+		}
 		catch (ChessEvents& e) // error found or checkmate
 		{
 			msgToGraphics[0] = (char)(e.getDetails().eventType + '0');  // creating the msg 
-			cout << "Error: " << e.getDetails().explain << endl;
-			return;
+			cout << "ChessEvent: " << e.getDetails().explain << endl;
 		}
+		
 
 		msgToGraphics[1] = 0;
 		cout << "Start:" << oldCords[0] << " " << oldCords[1] << endl << newCords[0] << " " << newCords[1] << endl;

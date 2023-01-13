@@ -133,5 +133,8 @@
   <ItemGroup>
     <Resource Include="ResourcesPack\Exclamation mark.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourcesPack\exclamation-mark-2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
