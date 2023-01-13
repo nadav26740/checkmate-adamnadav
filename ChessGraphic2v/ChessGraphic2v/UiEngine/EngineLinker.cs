@@ -143,7 +143,8 @@ namespace ChessGraphic2v.UiEngine
                     BoardHandler.LoaderScreen = new AdditionalScreens.LoadingScreen();
                     BoardHandler.LoaderScreen.MainText.Text = "GG, " + (IsWhitePlaying ? "White" : "Black") + " Won!";
                     BoardHandler.LoaderScreen.Owner = BoardHandler.MainWindowHandler;
-                    BoardHandler.LoaderScreen.FontSize = 42; 
+                    BoardHandler.LoaderScreen.MainText.FontSize = 36;
+
                     BoardHandler.LoaderScreen.Show();
                     BoardHandler.MainWindowHandler.GameEnded();
                     break;
