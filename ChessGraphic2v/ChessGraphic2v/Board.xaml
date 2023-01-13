@@ -140,21 +140,21 @@
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
         <!--#endregion-->
         <!--#region Row-->
-        <Label Grid.Row="1" Content="8" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
+        <Label Grid.Row="1" Content="1" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="2" Content="7" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
+        <Label Grid.Row="2" Content="2" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="3" Content="6" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
+        <Label Grid.Row="3" Content="3" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="4" Content="5" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
+        <Label Grid.Row="4" Content="4" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                    FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="5" Content="4" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
+        <Label Grid.Row="5" Content="5" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="6" Content="3" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
+        <Label Grid.Row="6" Content="6" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="7" Content="2" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
+        <Label Grid.Row="7" Content="7" VerticalAlignment="Center" Foreground="{StaticResource BlackSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="8" Content="1" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
+        <Label Grid.Row="8" Content="8" VerticalAlignment="Center" Foreground="{StaticResource WhiteSlotsColor}"
                        FontFamily="Franklin Gothic Heavy" FontSize="16" FontWeight="Bold"/>
         <!--#endregion-->
         <!--#endregion-->

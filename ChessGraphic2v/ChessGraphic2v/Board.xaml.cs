@@ -86,21 +86,15 @@ namespace ChessGraphic2v
             
 
             // Highlighting the choosen slots
-            if ((Grid.GetRow(panel) + Grid.GetColumn(panel)) % 2 == 1)
-                panel.Background = (RadialGradientBrush)FindResource("WhiteSlotChosed");
-            else
-                panel.Background = (RadialGradientBrush)FindResource("BlackSlotChosed");
 
             // to highlight the chossen Slots and Run the command if needed
             if(Status == BoardStatus.None)
             {
                 FirstPose.x = Grid.GetColumn(panel);
                 FirstPose.y = Grid.GetRow(panel);
-                BoardHandler.MainWindowHandler.ChangeNotification("Panel: [" + Grid.GetRow(panel) + ", "
-                + (char)(Grid.GetColumn(panel) + 'a' - 1) + "] Has Been Pressed", false);
 
                 // removing old panels that has chossen highlights
-                if (FirstPanel!= null)
+                if (FirstPanel != null)
                 {
                     if ((Grid.GetRow(FirstPanel) + Grid.GetColumn(FirstPanel)) % 2 == 1)
                         FirstPanel.Background = (RadialGradientBrush)FindResource("WhiteSlotsColor");
@@ -122,15 +116,19 @@ namespace ChessGraphic2v
             {
                 LastPose.x = Grid.GetColumn(panel);
                 LastPose.y = Grid.GetRow(panel);
-                BoardHandler.MainWindowHandler.ChangeNotification("Moving: " + FirstPose + " To " + LastPose, false);
                 LastPanel = panel;
                 // todo: sending The Command to the server
-
+                BoardHandler.Elinker.SendMoveToEngine(FirstPose, LastPose);
 
 
                 // changing the status back to normal
                 Status = BoardStatus.None;
             }
+
+            if ((Grid.GetRow(panel) + Grid.GetColumn(panel)) % 2 == 1)
+                panel.Background = (RadialGradientBrush)FindResource("WhiteSlotChosed");
+            else
+                panel.Background = (RadialGradientBrush)FindResource("BlackSlotChosed");
         }
     }
 }

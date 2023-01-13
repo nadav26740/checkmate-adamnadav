@@ -96,11 +96,17 @@ namespace ChessGraphic2v
         {
             if(this.IsEnabled)
             {
-                ChangeNotification("Game Started!", true);
-                BoardHandler.SetNewTableByString(BoardHandler.Elinker.pipes.getEngineMessage());
+               
                 Storyboard sb = (Storyboard)FindResource("TintBoarderDisapear");
                 Tint.BeginStoryboard(sb);
             }
+        }
+
+        public void GameEnded()
+        {
+            this.IsEnabled = false;
+            Storyboard sb = (Storyboard)FindResource("TintBoarderShowing");
+            Tint.BeginStoryboard(sb);
         }
 
     }

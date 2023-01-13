@@ -176,14 +176,14 @@ namespace ChessGraphic2v
             {
                 for (int j = 0; j < ToolsPos.GetLength(1); j++)
                 {
-                    if (ToolsPos[i, j] != null)
+                    if (ToolsPos[j, i] != null)
                     {
                         // setting the tool presenter location in grid
-                        Grid.SetColumn  (ToolsPos[i, j].presenter, ToolsPos[i, j].pos.y);
-                        Grid.SetRow     (ToolsPos[i, j].presenter, ToolsPos[i, j].pos.x);
+                        Grid.SetColumn  (ToolsPos[j, i].presenter, ToolsPos[j, i].pos.y);
+                        Grid.SetRow     (ToolsPos[j, i].presenter, ToolsPos[j, i].pos.x);
 
                         // setting the tool it self in the grid
-                        boardhandle.GridBoard.Children.Add(ToolsPos[i, j].presenter);
+                        boardhandle.GridBoard.Children.Add(ToolsPos[j, i].presenter);
                     }
                 }
             }
@@ -193,28 +193,69 @@ namespace ChessGraphic2v
         // old pose (old tool) is the tool that doing the move
         public static void ChangeToolPosition(Pose oldP, Pose NewP) 
         { 
-            if (ToolsPos[NewP.x, NewP.y].presenter != null)
+
+            // for debug
+            for(int i = 0; i < ToolsPos.GetLength(0); i++)
             {
-                // removing the new tool presenter
-                boardhandle.GridBoard.Children.Remove(ToolsPos[NewP.x, NewP.y].presenter);
+                Debug.WriteLine("");
+                for (int j = 0; j < ToolsPos.GetLength(1); j++)
+                {
+                    if (ToolsPos[j, i] == null)
+                    {
+                        Debug.Write("# ");
+                    }
+                    else
+                        Debug.Write(ToolsPos[j, i].Type.ToString() + (ToolsPos[j, i].isBlack ? "B " : "W "));
+                }
+            }
+            // debuging !! 
+
+            // MainWindowHandler.ChangeNotification(oldP.ToString() + " : " + ToolsPos[oldP.x - 1, oldP.y - 1].Type);
+
+            if (ToolsPos[NewP.x - 1, NewP.y - 1] != null)
+            {
+                boardhandle.GridBoard.Children.Remove(ToolsPos[NewP.x - 1, NewP.y - 1].presenter);
+
+                ToolsPos[NewP.x - 1, NewP.y - 1] = null;
             }
 
-            if (ToolsPos[oldP.x, oldP.y].presenter != null)
+            if (ToolsPos[oldP.x - 1, oldP.y - 1] != null)
             {
-                // removing the old tool presenter
-                boardhandle.GridBoard.Children.Remove(ToolsPos[oldP.x, oldP.y].presenter);
+                boardhandle.GridBoard.Children.Remove(ToolsPos[oldP.x - 1, oldP.y - 1].presenter);
+                Grid.SetColumn(ToolsPos[oldP.x - 1, oldP.y - 1].presenter, NewP.x);
+                Grid.SetRow(ToolsPos[oldP.x - 1, oldP.y - 1].presenter, NewP.y);
+                boardhandle.GridBoard.Children.Add(ToolsPos[oldP.x - 1, oldP.y - 1].presenter);
 
-                // Setting new grid location
-                Grid.SetColumn  (ToolsPos[oldP.x, oldP.y].presenter,  NewP.y);
-                Grid.SetRow     (ToolsPos[oldP.x, oldP.y].presenter,  NewP.x);
-
-                // removing the new tool
-                ToolsPos[NewP.x, NewP.y] = ToolsPos[oldP.x, oldP.y];
-                ToolsPos[NewP.x, NewP.y] *= ToolsType.None;
-
-                // setting the presenter in the grid
-                boardhandle.GridBoard.Children.Add(ToolsPos[NewP.x, NewP.y].presenter);
+                ToolsPos[NewP.x - 1, NewP.y - 1] = ToolsPos[oldP.x - 1, oldP.y - 1];
+                ToolsPos[oldP.x - 1, oldP.y - 1] = null;
             }
+
+            //if (ToolsPos[NewP.y, NewP.x] != null)
+            //{
+            //    // removing the new tool presenter
+            //    boardhandle.GridBoard.Children.Remove(ToolsPos[NewP.y, NewP.x].presenter);
+            //}
+
+            //if (ToolsPos[oldP.y, oldP.x] != null)
+            //{
+            //    // debuing!!>
+            //    MainWindowHandler.ChangeNotification(oldP.ToString() + " => " + NewP.ToString() 
+            //        + " : " + ToolsPos[oldP.y, oldP.x].Type.ToString());
+
+            //    // removing the old tool presenter
+            //    boardhandle.GridBoard.Children.Remove(ToolsPos[oldP.y, oldP.x].presenter);
+
+            //    // Setting new grid location
+            //    Grid.SetColumn  (ToolsPos[oldP.y, oldP.x].presenter,  NewP.y);
+            //    Grid.SetRow     (ToolsPos[oldP.y, oldP.x].presenter,  NewP.x);
+
+            //    // removing the new tool
+            //    ToolsPos[NewP.y, NewP.x] = ToolsPos[oldP.y, oldP.x];
+            //    ToolsPos[NewP.y, NewP.x] *= ToolsType.None;
+
+            //    // setting the presenter in the grid
+            //    boardhandle.GridBoard.Children.Add(ToolsPos[NewP.y, NewP.x].presenter);
+            //}
         }
 
         private static void ChangeToolType(Pose current, ToolsType type)

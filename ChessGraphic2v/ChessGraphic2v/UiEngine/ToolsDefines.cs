@@ -20,7 +20,7 @@ namespace ChessGraphic2v
 
         public override string ToString()
         {
-            return x.ToString() + (char)(y  + 'a' - 1);
+            return (char)(x + 'a' - 1) + y.ToString();
         }
     }
 
@@ -34,11 +34,11 @@ namespace ChessGraphic2v
     // 6 - invalid move (illegal movement with piece)
     // 7 - Invalid move - source and dest are equal
     // 8 - check mate
-    enum AnswersProtocol : byte
+    public enum AnswersProtocol : byte
     {
         ValidMove,
         ValidMoveChess,
-        InvalidMoveSelfSuicied,
+        InvalidMoveNotYourPlayer,
         InvalidMoveDestIsntFree,
         InvalidMoveChessOccur,
         InvalidMoveOutOfIndex,
