@@ -189,6 +189,11 @@ namespace ChessGraphic2v
             }
         }   
 
+        public static BitmapImage GetToolimage (Pose pose)
+        {
+            return ToolsPos[pose.x - 1, pose.y - 1].image;
+        }
+
         // new pose (new tool) is the tool that being eaten
         // old pose (old tool) is the tool that doing the move
         public static void ChangeToolPosition(Pose oldP, Pose NewP) 

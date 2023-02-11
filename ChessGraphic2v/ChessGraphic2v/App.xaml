@@ -5,6 +5,6 @@
              StartupUri="MainWindow.xaml"
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Styles/HistoryListStyle.xaml"/>
     </Application.Resources>
 </Application>

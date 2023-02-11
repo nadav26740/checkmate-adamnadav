@@ -1,0 +1,115 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="HistoryListItemTemplate">
+        <Border BorderBrush="#ECF0F1" BorderThickness="2" Background="#34495E" CornerRadius="15">
+            <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Margin="5" BorderBrush="#Af000000" BorderThickness="0" CornerRadius="15" ClipToBounds="True">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding Path=ToolImage}" 
+                           Stretch="Uniform" RenderOptions.BitmapScalingMode="Fant" />
+                    </Border.Background>
+                </Border>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="275"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="1"  Background="#CFD8DC" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                BorderBrush="#212121" BorderThickness="3" CornerRadius="10">
+                        <TextBlock Text="{Binding Path=To, FallbackValue='To'}" TextAlignment="Center" Padding="18" Foreground="#212121"
+                                   FontFamily="Arial Black" FontSize="18" FontWeight="Bold"/>
+                    </Border>
+
+                    <TextBlock Grid.Column="2" Text="{Binding Path=MoveType, FallbackValue='←'}" Foreground="#ECF0F1" FontSize="92" Margin="0,0,0,20"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                    <Border Grid.Column="3"  Background="#CFD8DC" HorizontalAlignment="left" VerticalAlignment="Center"
+                                BorderBrush="#212121" BorderThickness="3" CornerRadius="10">
+                        <TextBlock Text="{Binding Path=From, FallbackValue='From'}" TextAlignment="Center" Padding="18" Foreground="#212121"
+                                   FontFamily="Arial Black" FontSize="18" FontWeight="Bold"/>
+                    </Border>
+
+                    <TextBlock Text="{Binding Path=Description, FallbackValue='Chess Has been accured'}" TextAlignment="Left" Padding="18" Foreground="#ECF0F1"
+                                   FontFamily="Arial Black" FontSize="15" FontWeight="Bold" TextWrapping="WrapWithOverflow"/>
+                </Grid>
+                <!-- <StackPanel Grid.Column="1" Margin="5">
+                        <StackPanel Orientation="Horizontal" TextBlock.FontSize="30" TextBlock.FontFamily="Arial Black">
+                            <TextBlock Text="{Binding Path=To, FallbackValue='To'}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Path=from, FallbackValue='From'}" FontSize="18" 
+                                   FontFamily="Arial" FontStyle="Italic"/>
+                    </StackPanel> -->
+
+            </Grid>
+        </Border>
+
+        <!--<Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+            </Grid.RowDefinitions>
+
+            <Border Margin="5" BorderBrush="#Af000000" BorderThickness="0" CornerRadius="15" ClipToBounds="True">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding Path=T_image}" 
+                           Stretch="UniformToFill" RenderOptions.BitmapScalingMode="Fant" />
+                </Border.Background>
+            </Border>
+            
+            <StackPanel Grid.Column="1" Margin="5">
+                <StackPanel Orientation="Horizontal" TextBlock.FontSize="30" TextBlock.FontFamily="Arial Black">
+                    <TextBlock Text="{Binding Path=To, FallbackValue='To'}"/>
+                </StackPanel>
+                <TextBlock Text="{Binding Path=from, FallbackValue='From'}" FontSize="18" FontFamily="Arial" FontStyle="Italic"/>
+            </StackPanel>
+
+        </Grid>-->
+    </DataTemplate>
+    
+    
+    
+    <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
+    <Style x:Key="HistoryListBoxStyle" TargetType="{x:Type ListView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListView}">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" Padding="1" SnapsToDevicePixels="true" CornerRadius="15">
+                        <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}"
+                                      HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true"/>
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

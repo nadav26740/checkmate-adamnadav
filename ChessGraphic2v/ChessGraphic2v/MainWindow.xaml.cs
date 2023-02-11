@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGraphic2v.UiEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,23 @@ using System.Windows.Shapes;
 
 namespace ChessGraphic2v
 {
+    public class ComputerInfo
+    {
+        public string Name { get; set; }
+        public string Ip { get; set; }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        public void AddChessMoveToHistory(UiEngine.ChessHistoryMove move)
+        {
+            HistoryList.Items.Add(move);
+            HistoryList.SelectedIndex = HistoryList.Items.Count - 1;
+            HistoryList.ScrollIntoView(HistoryList.SelectedItem);
+        }
 
         public MainWindow()
         {
@@ -29,6 +42,8 @@ namespace ChessGraphic2v
             BoardHandler.LoaderScreen = new AdditionalScreens.LoadingScreen();
             Loaded += new RoutedEventHandler(showLoadingScreen);
             BoardHandler.MainWindowHandler = this;
+            int x = 1;
+
         }
 
         private void showLoadingScreen(object sender, RoutedEventArgs e)

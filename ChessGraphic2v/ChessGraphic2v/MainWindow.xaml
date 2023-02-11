@@ -7,7 +7,7 @@
         mc:Ignorable="d" Closing="Window_Closed"
         Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen" 
         Icon="/ResourcesPack/Chess Knight icon.png" 
-        IsEnabled="False" IsEnabledChanged="GameStarted">
+        IsEnabled="false" IsEnabledChanged="GameStarted">
     <Window.Background>
         <LinearGradientBrush EndPoint="-0.4,-0.2" StartPoint="1.2,1.2">
             <GradientStop Color="#16A085"/>
@@ -103,6 +103,17 @@
                    BorderBrush="#2C3E50"
                    BorderThickness="6" />
 
+            <!--region History List view-->
+
+            <Border Grid.Column="1" Margin="30" CornerRadius="30" Background="#2C3E50" ClipToBounds="True"
+                    BorderBrush="#ECF0F1" BorderThickness="5">
+                <!--#region ItemTemplate-->
+                <ListView Style="{DynamicResource HistoryListBoxStyle}" x:Name="HistoryList" Background="Transparent" IsHitTestVisible="False"
+                          ItemTemplate="{StaticResource ResourceKey=HistoryListItemTemplate}"></ListView>
+                <!--#endregion-->
+            </Border>
+            
+        <!--#endregion-->
             <!--#region Notification Border-->
             <Border Grid.Column="2" Grid.Row="2" Background="#FF34515D" CornerRadius="25" Width="420" 
                     HorizontalAlignment="Right" Margin="0,0,40,-200" Height="180" 

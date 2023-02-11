@@ -98,11 +98,14 @@ namespace ChessGraphic2v.UiEngine
             switch (tempByte)
             {
                 case AnswersProtocol.ValidMove:
+                    BoardHandler.MainWindowHandler.AddChessMoveToHistory( new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose), tempByte, IsWhitePlaying));
                     BoardHandler.ChangeToolPosition(oldPose, newPose);
                     IsWhitePlaying = !IsWhitePlaying;
                     break;
 
                 case AnswersProtocol.ValidMoveChess:
+                    BoardHandler.MainWindowHandler.AddChessMoveToHistory(new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose), tempByte, IsWhitePlaying));
+
                     BoardHandler.ChangeToolPosition(oldPose, newPose);
                     BoardHandler.MainWindowHandler.ChangeNotification
                         ((IsWhitePlaying ? "White" : "Black") + " Has made a chess");
@@ -140,6 +143,9 @@ namespace ChessGraphic2v.UiEngine
                     break;
 
                 case AnswersProtocol.EndGame:
+                    BoardHandler.MainWindowHandler.AddChessMoveToHistory(new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose), tempByte, IsWhitePlaying));
+                    BoardHandler.ChangeToolPosition(oldPose, newPose);
+
                     BoardHandler.LoaderScreen = new AdditionalScreens.LoadingScreen();
                     BoardHandler.LoaderScreen.MainText.Text = "GG, " + (IsWhitePlaying ? "White" : "Black") + " Won!";
                     BoardHandler.LoaderScreen.Owner = BoardHandler.MainWindowHandler;
