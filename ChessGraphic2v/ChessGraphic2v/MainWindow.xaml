@@ -4,20 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGraphic2v"
-        mc:Ignorable="d" Closing="Window_Closed"
-        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen" 
-        Icon="/ResourcesPack/Chess Knight icon.png" 
+        mc:Ignorable="d" Closing="Window_Closed" SizeChanged="Window_SizeChanged_Event"
+        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterOwner" 
+        Icon="/ResourcesPack/Chess Knight icon.png" Background="{DynamicResource WindowBackgroundColor}"
         IsEnabled="false" IsEnabledChanged="GameStarted">
-    <Window.Background>
-        <LinearGradientBrush EndPoint="-0.4,-0.2" StartPoint="1.2,1.2">
-            <GradientStop Color="#16A085"/>
-            <GradientStop Color="#2ECC71" Offset="1"/>
-        </LinearGradientBrush>
-    </Window.Background>
 
     <!--#region Storyboards-->
     <Window.Resources>
         <!--#region border Notification colors-->
+        <LinearGradientBrush x:Key="WindowBackgroundColor" EndPoint="-0.4,-0.2" StartPoint="1.2,1.2">
+            <GradientStop Color="#16A085"/>
+            <GradientStop Color="#2ECC71" Offset="1"/>
+        </LinearGradientBrush>
         <Color x:Key="NonCriticalGradientStop1">#25D366</Color>
         <Color x:Key="NonCriticalGradientStop2">#00AFF0</Color>
         
@@ -93,16 +91,17 @@
     <!--#endregion-->
 
     <Grid>
-        <Grid ClipToBounds="True">
+        <Grid ClipToBounds="True" x:Name="ElementsGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="850"/>
+                <ColumnDefinition Width="900"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Border Background="Black" Opacity="0.15" Margin="5" BorderThickness="2" BorderBrush="Black"/>
-            <Frame x:Name="Framer" Width="825" Height="825" 
-                   BorderBrush="#2C3E50"
-                   BorderThickness="6" />
 
+            <Frame x:Name="Framer" Width="850" Height="850" 
+                   BorderBrush="#2C3E50"
+                   BorderThickness="5" />
+            
             <!--region History List view-->
 
             <Border Grid.Column="1" Margin="30" CornerRadius="30" Background="#2C3E50" ClipToBounds="True"

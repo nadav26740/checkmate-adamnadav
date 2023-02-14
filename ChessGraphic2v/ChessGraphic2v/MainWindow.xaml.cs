@@ -17,17 +17,24 @@ using System.Windows.Shapes;
 
 namespace ChessGraphic2v
 {
-    public class ComputerInfo
-    {
-        public string Name { get; set; }
-        public string Ip { get; set; }
-    }
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        double originalWindowHeight;
+        double OriginalWindowWidth;
+
+        public struct objecOriginalSize
+        {
+
+            public FrameworkElement objref;
+            public double Original_height;
+            public double Original_width;
+        }
+
+        private List<objecOriginalSize> OriginalElements;
+
         public void AddChessMoveToHistory(UiEngine.ChessHistoryMove move)
         {
             HistoryList.Items.Add(move);
@@ -38,14 +45,41 @@ namespace ChessGraphic2v
         public MainWindow()
         {
             InitializeComponent();
+            originalWindowHeight = this.Height;
+            OriginalWindowWidth = this.Width;
+
             Framer.Content = new Board();
             BoardHandler.LoaderScreen = new AdditionalScreens.LoadingScreen();
             Loaded += new RoutedEventHandler(showLoadingScreen);
             BoardHandler.MainWindowHandler = this;
-            int x = 1;
-
+            OriginalElements = new List<objecOriginalSize>();
+            Loaded += new RoutedEventHandler(load_Originsl_Elements_to_Arrays);
         }
 
+
+        // to keep all the original size of specific elements
+        public void load_Originsl_Elements_to_Arrays(object sender, RoutedEventArgs e)
+        {
+            objecOriginalSize tempStruct;
+            // obj list of the objects that will be effected from size changing
+            FrameworkElement[] ElementsToLoad = { Framer };
+
+            //getting orignal window height
+            // getting original window width
+            
+            // here we right every element we wanna save
+            // by the next thing 
+            foreach (FrameworkElement element in ElementsToLoad)
+            {
+                tempStruct.objref = element;
+                tempStruct.Original_width = element.Width;
+                tempStruct.Original_height = element.Height;
+                OriginalElements.Add(tempStruct);
+            }
+
+            // special cases
+        }
+        
         private void showLoadingScreen(object sender, RoutedEventArgs e)
         {
             // showing the loading screen in the middle of the main window
@@ -124,5 +158,26 @@ namespace ChessGraphic2v
             Tint.BeginStoryboard(sb);
         }
 
+        private void Window_SizeChanged_Event(object sender, SizeChangedEventArgs e)
+        {
+            MainWindow_SizeChanged();
+        }
+
+        private void MainWindow_SizeChanged()
+        {
+            if (!IsLoaded)
+                return;
+            // to store only the smaller scale
+            double temp;
+            temp = Math.Min((this.ActualHeight / originalWindowHeight), (this.ActualWidth / OriginalWindowWidth));
+
+            foreach (objecOriginalSize obj in OriginalElements)
+            {
+                obj.objref.Height = obj.Original_height * temp;
+                obj.objref.Width = obj.Original_width * temp;
+            }
+
+            ElementsGrid.ColumnDefinitions[0].Width = new GridLength( Framer.Width);
+        }
     }
 }
