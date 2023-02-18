@@ -22,9 +22,12 @@ namespace ChessGraphic2v
     /// </summary>
     public partial class MainWindow : Window
     {
+        // defines
+        const bool enableLoadingScreen = false;
+        const bool Dock_Loading_Screen_To_Main_Window = true;
+        
         double originalWindowHeight;
         double OriginalWindowWidth;
-
         public struct objecOriginalSize
         {
 
@@ -60,6 +63,15 @@ namespace ChessGraphic2v
         // to keep all the original size of specific elements
         public void load_Originsl_Elements_to_Arrays(object sender, RoutedEventArgs e)
         {
+            if (SystemParameters.PrimaryScreenWidth < this.Width || SystemParameters.PrimaryScreenHeight < this.Height)
+            {
+                this.Top = 0;
+                this.Left = 0;
+                this.Width = SystemParameters.PrimaryScreenWidth;
+                this.Height = SystemParameters.MaximizedPrimaryScreenHeight;
+                this.WindowState = WindowState.Maximized;
+            }
+
             objecOriginalSize tempStruct;
             // obj list of the objects that will be effected from size changing
             FrameworkElement[] ElementsToLoad = { Framer };
@@ -78,6 +90,10 @@ namespace ChessGraphic2v
             }
 
             // special cases
+
+
+            // running the resize for the first time 
+            MainWindow_SizeChanged();
         }
         
         private void showLoadingScreen(object sender, RoutedEventArgs e)
@@ -177,7 +193,21 @@ namespace ChessGraphic2v
                 obj.objref.Width = obj.Original_width * temp;
             }
 
-            ElementsGrid.ColumnDefinitions[0].Width = new GridLength( Framer.Width);
+            ElementsGrid.ColumnDefinitions[0].Width = new GridLength(Framer.Width);
+            if (Dock_Loading_Screen_To_Main_Window && BoardHandler.LoaderScreen != null
+                && BoardHandler.LoaderScreen.Visibility == Visibility.Visible)
+            {
+                BoardHandler.LoaderScreen.ChangeDockingPos(Height, Width, Top, Left, this.WindowState);
+            }
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            if (Dock_Loading_Screen_To_Main_Window && BoardHandler.LoaderScreen != null
+                && BoardHandler.LoaderScreen.Visibility == Visibility.Visible)
+            {
+                BoardHandler.LoaderScreen.ChangeDockingPos(Height, Width, Top, Left, this.WindowState);
+            }
         }
     }
 }

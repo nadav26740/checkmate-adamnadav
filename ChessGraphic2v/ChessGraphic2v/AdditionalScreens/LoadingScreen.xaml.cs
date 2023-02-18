@@ -38,5 +38,27 @@ namespace ChessGraphic2v.AdditionalScreens
             Task.Delay(TimeSpan.FromSeconds(0.75));
             this.Close();
         }
+
+        public void ChangeDockingPos(double HostHeight, double HostWidth, double HostTop, double HostLeft, WindowState HostWindowState)
+        {
+            if (HostWindowState == WindowState.Maximized)
+            {
+                HostLeft = 0;
+                HostTop = 0;
+            }
+
+            double x = 0, y = 0;
+            HostHeight = Math.Max(HostHeight, this.Height);
+            HostWidth = Math.Max(HostWidth, this.Width);
+
+            x = HostWidth / 2 + HostLeft;
+            y = HostHeight / 2 + HostTop;
+
+            x -= Width / 2;
+            y -= Height / 2;
+
+            Top = y;
+            Left = x;
+        }
     }
 }

@@ -82,6 +82,7 @@ namespace ChessGraphic2v
 
         public void close()
         {
+            ss.sendMoveToEngine("quit");
             pipeServer.Close();
         }
     }

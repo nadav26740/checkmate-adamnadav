@@ -23,6 +23,8 @@ namespace ChessGraphic2v.UiEngine
             Thread_thread = new Thread(this.WaitforConnection);
             Thread_thread.Start();
 
+            new EngineProccess();
+
             Console.WriteLine("Teestttt");
         }
 
@@ -38,7 +40,7 @@ namespace ChessGraphic2v.UiEngine
         private void WaitforConnection()
         {
 
-            if (pipes.connect())
+            if (pipes.connect() && pipes.isConnected())
             {
 
                 BoardHandler.LoaderScreen.Dispatcher.Invoke(() =>
@@ -59,15 +61,12 @@ namespace ChessGraphic2v.UiEngine
 
                 return;
             }
-
             BoardHandler.LoaderScreen.Dispatcher.Invoke(() =>
             {
                 BoardHandler.LoaderScreen.MainText.Text = "Error: Failed To Connect the Engine";
 
                 BoardHandler.LoaderScreen.MainText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFBD081C"));
             });
-            Task.Delay(5000).Wait();
-            App.Current.Shutdown();
         }
 
         // for making sure the thread getting closed too!
@@ -98,13 +97,15 @@ namespace ChessGraphic2v.UiEngine
             switch (tempByte)
             {
                 case AnswersProtocol.ValidMove:
-                    BoardHandler.MainWindowHandler.AddChessMoveToHistory( new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose), tempByte, IsWhitePlaying));
+                    BoardHandler.MainWindowHandler.AddChessMoveToHistory( new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose),
+                        tempByte, IsWhitePlaying));
                     BoardHandler.ChangeToolPosition(oldPose, newPose);
                     IsWhitePlaying = !IsWhitePlaying;
                     break;
 
                 case AnswersProtocol.ValidMoveChess:
-                    BoardHandler.MainWindowHandler.AddChessMoveToHistory(new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose), tempByte, IsWhitePlaying));
+                    BoardHandler.MainWindowHandler.AddChessMoveToHistory(new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose)
+                        , tempByte, IsWhitePlaying));
 
                     BoardHandler.ChangeToolPosition(oldPose, newPose);
                     BoardHandler.MainWindowHandler.ChangeNotification
@@ -143,14 +144,15 @@ namespace ChessGraphic2v.UiEngine
                     break;
 
                 case AnswersProtocol.EndGame:
-                    BoardHandler.MainWindowHandler.AddChessMoveToHistory(new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose), tempByte, IsWhitePlaying));
+                    BoardHandler.MainWindowHandler.AddChessMoveToHistory(new UiEngine.ChessHistoryMove(oldPose, newPose, BoardHandler.GetToolimage(oldPose),
+                        tempByte, IsWhitePlaying, "#e3b505"));
                     BoardHandler.ChangeToolPosition(oldPose, newPose);
 
                     BoardHandler.LoaderScreen = new AdditionalScreens.LoadingScreen();
                     BoardHandler.LoaderScreen.MainText.Text = "GG, " + (IsWhitePlaying ? "White" : "Black") + " Won!";
                     BoardHandler.LoaderScreen.Owner = BoardHandler.MainWindowHandler;
                     BoardHandler.LoaderScreen.MainText.FontSize = 36;
-
+                    BoardHandler.LoaderScreen.Topmost = false;
                     BoardHandler.LoaderScreen.Show();
                     BoardHandler.MainWindowHandler.GameEnded();
                     break;

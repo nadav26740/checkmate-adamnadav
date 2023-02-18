@@ -65,7 +65,7 @@ void main()
 	// get message from graphics
 	string msgFromGraphics = p.getMessageFromGraphics();
 
-	while (msgFromGraphics != "quit")
+	while (msgFromGraphics != "quit" && msgFromGraphics != "")
 	{
 		// should handle the string the sent from graphics
 		// according the protocol. Ex: e2e4           (move e2 to e4)
@@ -95,6 +95,7 @@ void main()
 		{
 			msgToGraphics[0] = (char)(e.getDetails().eventType + '0');  // creating the msg 
 			cout << "ChessEvent: " << e.getDetails().explain << endl;
+			tempPiece = nullptr;
 		}
 		
 

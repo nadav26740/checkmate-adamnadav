@@ -61,6 +61,7 @@
     <Compile Include="UiEngine\ChessHistoryMove.cs" />
     <Compile Include="UiEngine\EngineLinker.cs" />
     <Compile Include="UiEngine\Pipe.cs" />
+    <Compile Include="UiEngine\SecretProccess.cs" />
     <Compile Include="UiEngine\ToolsDefines.cs" />
     <Page Include="AdditionalScreens\LoadingScreen.xaml">
       <SubType>Designer</SubType>

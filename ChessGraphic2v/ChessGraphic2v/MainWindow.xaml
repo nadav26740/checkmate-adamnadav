@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChessGraphic2v"
+        xmlns:local="clr-namespace:ChessGraphic2v" LocationChanged="Window_LocationChanged"
         mc:Ignorable="d" Closing="Window_Closed" SizeChanged="Window_SizeChanged_Event"
-        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterOwner" 
+        Title="Chess GUI" Height="900" Width="1600" WindowStartupLocation="CenterScreen" 
         Icon="/ResourcesPack/Chess Knight icon.png" Background="{DynamicResource WindowBackgroundColor}"
         IsEnabled="false" IsEnabledChanged="GameStarted">
 
@@ -96,7 +96,7 @@
                 <ColumnDefinition Width="900"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Background="Black" Opacity="0.15" Margin="5" BorderThickness="2" BorderBrush="Black"/>
+            <Border Background="Black" Opacity="0.10" Margin="5" BorderThickness="2" BorderBrush="Black"/>
 
             <Frame x:Name="Framer" Width="850" Height="850" 
                    BorderBrush="#2C3E50"
@@ -108,7 +108,13 @@
                     BorderBrush="#ECF0F1" BorderThickness="5">
                 <!--#region ItemTemplate-->
                 <ListView Style="{DynamicResource HistoryListBoxStyle}" x:Name="HistoryList" Background="Transparent" IsHitTestVisible="False"
-                          ItemTemplate="{StaticResource ResourceKey=HistoryListItemTemplate}"></ListView>
+                          ItemTemplate="{StaticResource ResourceKey=HistoryListItemTemplate}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
                 <!--#endregion-->
             </Border>
             

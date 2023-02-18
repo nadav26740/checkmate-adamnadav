@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace ChessGraphic2v.UiEngine
 {
@@ -14,13 +15,17 @@ namespace ChessGraphic2v.UiEngine
         public string From { get; set; }
         public string Description { get; set; }
         public string MoveType { get; set; }
+        public string HexColor { get; set; }
 
-        public ChessHistoryMove(Pose P_From, Pose P_To, BitmapImage T_image, AnswersProtocol answer, bool IsWhitePlaying = false) 
+        public ChessHistoryMove(Pose P_From, Pose P_To, BitmapImage T_image, AnswersProtocol answer,
+            bool IsWhitePlaying = false, string Hex_Color = "") 
         { 
             To = P_To.ToString();
             From = P_From.ToString();
             ToolImage = T_image;
             SetMoveDescription(answer, IsWhitePlaying);
+            this.HexColor = Hex_Color;
+            
         }
 
         private void SetMoveDescription(AnswersProtocol answer, bool IsWhitePlaying)

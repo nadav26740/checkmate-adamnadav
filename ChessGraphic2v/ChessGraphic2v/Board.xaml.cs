@@ -31,7 +31,6 @@ namespace ChessGraphic2v
         private StackPanel FirstPanel;
         private Pose LastPose;
         private StackPanel LastPanel;
-
         private BoardStatus Status;
 
         public Grid getGridBoard() { return GridBoard; }
@@ -83,8 +82,8 @@ namespace ChessGraphic2v
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             StackPanel panel = sender as StackPanel;
-            
-
+            bool ilegalMove = false;
+            AnswersProtocol answers;
             // Highlighting the choosen slots
 
             // to highlight the chossen Slots and Run the command if needed
@@ -96,17 +95,10 @@ namespace ChessGraphic2v
                 // removing old panels that has chossen highlights
                 if (FirstPanel != null)
                 {
-                    if ((Grid.GetRow(FirstPanel) + Grid.GetColumn(FirstPanel)) % 2 == 1)
-                        FirstPanel.Background = (RadialGradientBrush)FindResource("WhiteSlotsColor");
-                    else
-                        FirstPanel.Background = (RadialGradientBrush)FindResource("BlackSlotsColor");
-
-                    if ((Grid.GetRow(LastPanel) + Grid.GetColumn(LastPanel)) % 2 == 1)
-                        LastPanel.Background = (RadialGradientBrush)FindResource("WhiteSlotsColor");
-                    else
-                        LastPanel.Background = (RadialGradientBrush)FindResource("BlackSlotsColor");
+                    // changing the color of the chossen panel to normal cause they arn't chosen anymore
+                    ChangePanelColor(FirstPanel, "WhiteSlotsColor", "BlackSlotsColor");
+                    ChangePanelColor(LastPanel, "WhiteSlotsColor", "BlackSlotsColor");
                 }
-
 
                 // setting the first panel
                 FirstPanel = panel; 
@@ -117,18 +109,35 @@ namespace ChessGraphic2v
                 LastPose.x = Grid.GetColumn(panel);
                 LastPose.y = Grid.GetRow(panel);
                 LastPanel = panel;
-                // todo: sending The Command to the server
-                BoardHandler.Elinker.SendMoveToEngine(FirstPose, LastPose);
+                // sending The Command to the server
+                answers = BoardHandler.Elinker.SendMoveToEngine(FirstPose, LastPose);
+                if (answers < AnswersProtocol.EndGame && answers > AnswersProtocol.ValidMoveChess)
+                {
+                    ilegalMove = true;
+                    Console.Beep();
 
+                    // changing the color of tha panels to red cause the move was ilegal 
+                    ChangePanelColor(FirstPanel, "WhiteSlotsInvaliedColor", "BlackSlotsInvaliedColor");
+                    ChangePanelColor(LastPanel, "WhiteSlotsInvaliedColor", "BlackSlotsInvaliedColor");
 
+                }
                 // changing the status back to normal
                 Status = BoardStatus.None;
             }
 
+            // if the move was legal changing the colors to blue
+            if (!ilegalMove)
+            {
+                ChangePanelColor(panel, "WhiteSlotChosed", "BlackSlotChosed");
+            }
+        }
+
+        void ChangePanelColor(StackPanel panel, string WhiteColor, string BlackColor)
+        {
             if ((Grid.GetRow(panel) + Grid.GetColumn(panel)) % 2 == 1)
-                panel.Background = (RadialGradientBrush)FindResource("WhiteSlotChosed");
+                panel.Background = (RadialGradientBrush)FindResource(WhiteColor);
             else
-                panel.Background = (RadialGradientBrush)FindResource("BlackSlotChosed");
+                panel.Background = (RadialGradientBrush)FindResource(BlackColor);
         }
     }
 }

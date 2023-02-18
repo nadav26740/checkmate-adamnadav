@@ -20,16 +20,25 @@
             <GradientStop Color="White"/>
             <GradientStop Color="#FFD1D7D8" Offset="1.8"/>
         </RadialGradientBrush>
+
+        <RadialGradientBrush x:Key="WhiteSlotsInvaliedColor" >
+            <GradientStop Color="Red"/>
+            <GradientStop Color="#FFDCDADA" Offset="1.6"/>
+        </RadialGradientBrush>
         <!--#endregion-->
         
         <!--#region BlackSlots Colors Define-->
         <RadialGradientBrush x:Key="BlackSlotChosed">
-            <GradientStop Color="#FF84FFCF"/>
+            <GradientStop Color="#7a95b5"/>
             <GradientStop Color="#FF273442" Offset="1.8"/>
         </RadialGradientBrush>
-        
+
         <RadialGradientBrush x:Key="BlackSlotsColor" >
-            <GradientStop Color="#2C3E50"/>
+            <GradientStop Color="#484349"/>
+            <GradientStop Color="#FF273442" Offset="1.5"/>
+        </RadialGradientBrush>
+        <RadialGradientBrush x:Key="BlackSlotsInvaliedColor" >
+            <GradientStop Color="Red"/>
             <GradientStop Color="#FF273442" Offset="1.5"/>
         </RadialGradientBrush>
         <!--#endregion-->
