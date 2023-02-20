@@ -57,8 +57,8 @@ namespace ChessGraphic2v
         public static void CreateNewTool(char c, Pose ps)
         {
             Tools tool = ConvertCharToTool(c);
-            Debug.WriteLine(c + " => " + (ps.y - 1).ToString() + ", " + (ps.x - 1).ToString() + " => " +
-                 ToolsPos.GetLength(0).ToString() + ", " + ToolsPos.GetLength(1).ToString());
+            //Debug.WriteLine(c + " => " + (ps.y - 1).ToString() + ", " + (ps.x - 1).ToString() + " => " +
+            //     ToolsPos.GetLength(0).ToString() + ", " + ToolsPos.GetLength(1).ToString());
 
             ToolsPos[ps.y - 1, ps.x - 1] = tool;
             if (tool == null)
@@ -200,19 +200,19 @@ namespace ChessGraphic2v
         { 
 
             // for debug
-            for(int i = 0; i < ToolsPos.GetLength(0); i++)
-            {
-                Debug.WriteLine("");
-                for (int j = 0; j < ToolsPos.GetLength(1); j++)
-                {
-                    if (ToolsPos[j, i] == null)
-                    {
-                        Debug.Write("# ");
-                    }
-                    else
-                        Debug.Write(ToolsPos[j, i].Type.ToString() + (ToolsPos[j, i].isBlack ? "B " : "W "));
-                }
-            }
+            //for(int i = 0; i < ToolsPos.GetLength(0); i++)
+            //{
+            //    Debug.WriteLine("");
+            //    for (int j = 0; j < ToolsPos.GetLength(1); j++)
+            //    {
+            //        if (ToolsPos[j, i] == null)
+            //        {
+            //            Debug.Write("# ");
+            //        }
+            //        else
+            //            Debug.Write(ToolsPos[j, i].Type.ToString() + (ToolsPos[j, i].isBlack ? "B " : "W "));
+            //    }
+            //}
             // debuging !! 
 
             // MainWindowHandler.ChangeNotification(oldP.ToString() + " : " + ToolsPos[oldP.x - 1, oldP.y - 1].Type);

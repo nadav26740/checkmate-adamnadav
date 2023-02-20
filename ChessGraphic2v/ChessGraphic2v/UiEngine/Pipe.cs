@@ -36,6 +36,11 @@ namespace ChessGraphic2v
         {
             if (ServerConnected)
             {
+                if (pipeServer.IsConnected)
+                {
+                    close();
+                }
+
                 return;
             }
             try
